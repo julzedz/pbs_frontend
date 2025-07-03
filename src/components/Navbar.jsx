@@ -90,12 +90,17 @@ const Navbar = () => {
         </HStack>
         <Flex alignItems={"center"}>
           <Button
-            as={RouterLink}
-            to="/post-property"
             colorScheme="purple"
             size="sm"
             mr={2}
             display={{ base: "none", md: "inline-flex" }}
+            onClick={() => {
+              if (user) {
+                navigate("/post-property");
+              } else {
+                navigate("/signin");
+              }
+            }}
           >
             Post Property
           </Button>
@@ -120,7 +125,10 @@ const Navbar = () => {
                 />
                 <Dialog.Positioner>
                   <Dialog.Content>
-                    <Dialog.Header display="flex" justifyContent="space-between">
+                    <Dialog.Header
+                      display="flex"
+                      justifyContent="space-between"
+                    >
                       <Dialog.Title>Confirm Logout</Dialog.Title>
                       <CloseButton
                         size="sm"
@@ -214,11 +222,16 @@ const Navbar = () => {
                         </Link>
                       ))}
                       <Button
-                        as={RouterLink}
-                        to="/post-property"
                         colorScheme="purple"
                         size="sm"
                         w="full"
+                        onClick={() => {
+                          if (user) {
+                            navigate("/post-property");
+                          } else {
+                            navigate("/signin");
+                          }
+                        }}
                       >
                         Post Property
                       </Button>
