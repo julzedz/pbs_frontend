@@ -166,7 +166,7 @@ const LandingPage = () => {
       {/* Featured Homes */}
       <Box maxW="7xl" mx="auto" py={12} px={4}>
         <Flex justify="space-between" align="center" mb={6}>
-          <Heading fontSize={{ base: "xl", md: "2xl" }}>Featured homes</Heading>
+          <Heading fontSize={{ base: "xl", md: "2xl" }}>Our Featured Properties</Heading>
           <Button variant="link">See all</Button>
         </Flex>
         <SimpleGrid columns={{ base: 1, md: 3 }} gap={6} spacing={8}>

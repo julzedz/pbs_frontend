@@ -13,7 +13,7 @@ import {
   Dialog,
 } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Link as RouterLink, useNavigate, useLocation } from "react-router-dom";
 import { useRef, useState } from "react";
 import logo from "../assets/property.png";
 import API from "../api";
@@ -30,6 +30,7 @@ const Navbar = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const user = useAppStore((state) => state.user);
   const logout = useAppStore((state) => state.logout);
 
@@ -73,19 +74,30 @@ const Navbar = () => {
             </HStack>
           </RouterLink>
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
-            {Links.map((link) => (
-              <Link
-                as={RouterLink}
-                key={link.label}
-                to={link.to}
-                px={2}
-                py={1}
-                rounded={"md"}
-                _hover={{ bg: "gray.100" }}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {Links.map((link) => {
+              const isActive =
+                location.pathname === link.to ||
+                (link.to !== "/" && location.pathname.startsWith(link.to));
+              return (
+                <Link
+                  as={RouterLink}
+                  key={link.label}
+                  to={link.to}
+                  px={2}
+                  py={1}
+                  rounded={"md"}
+                  _hover={{ bg: "gray.100" }}
+                  borderBottom={
+                    isActive ? "2px solid #805ad5" : "2px solid transparent"
+                  }
+                  color={isActive ? "purple.700" : undefined}
+                  fontWeight={isActive ? "bold" : undefined}
+                  transition="border-bottom 0.2s"
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </HStack>
         </HStack>
         <Flex alignItems={"center"}>
