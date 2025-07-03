@@ -1,4 +1,6 @@
 import axios from "axios";
+// Import only for type, not for hook usage
+// import { useAppStore } from "./store";
 
 const API = axios.create({
   baseURL: "http://localhost:3000",
@@ -8,6 +10,23 @@ const API = axios.create({
   },
   withCredentials: true, // for cookies if needed
 });
+
+// Attach JWT token to all requests if present
+API.interceptors.request.use(
+  (config) => {
+    let token;
+    try {
+      token = JSON.parse(localStorage.getItem("user"))?.token;
+    } catch {
+      token = null;
+    }
+    if (token) {
+      config.headers["Authorization"] = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
 
 export const signup = async (data) => {
   // Rails expects user params nested under 'user'

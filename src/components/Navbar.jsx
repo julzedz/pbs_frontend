@@ -10,20 +10,43 @@ import {
   CloseButton,
   Drawer,
   Text,
+  Dialog,
 } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
-import { Link as RouterLink } from "react-router-dom";
-import { useRef } from "react";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { useRef, useState } from "react";
 import logo from "../assets/property.png";
+import API from "../api";
+import { useAppStore } from "../store";
 
 const Links = [
-  { label: "Buy", to: "/" },
-  { label: "Rent", to: "/" },
-  { label: "Agents", to: "/" },
+  { label: "Buy", to: "/buy" },
+  { label: "Rent", to: "/rent" },
+  { label: "Agents", to: "/agents" },
 ];
 
 const Navbar = () => {
   const btnRef = useRef();
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const user = useAppStore((state) => state.user);
+  const logout = useAppStore((state) => state.logout);
+
+  const handleLogout = async () => {
+    setLoading(true);
+    try {
+      await API.delete("/users/sign_out");
+      logout();
+      setDialogOpen(false);
+      navigate("/signin");
+    } catch {
+      // Optionally show error
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Box
       bg="white"
@@ -76,16 +99,72 @@ const Navbar = () => {
           >
             Post Property
           </Button>
-          <Button
-            as={RouterLink}
-            to="/signin"
-            variant="ghost"
-            size="sm"
-            mr={2}
-            display={{ base: "none", md: "inline-flex" }}
-          >
-            Login
-          </Button>
+          {user ? (
+            <Dialog.Root open={dialogOpen} onOpenChange={setDialogOpen}>
+              <Dialog.Trigger asChild>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  mr={2}
+                  display={{ base: "none", md: "inline-flex" }}
+                  onClick={() => setDialogOpen(true)}
+                >
+                  Logout
+                </Button>
+              </Dialog.Trigger>
+              <Portal>
+                <Dialog.Backdrop
+                  onClick={(e) => {
+                    if (e.target === e.currentTarget) setDialogOpen(false);
+                  }}
+                />
+                <Dialog.Positioner>
+                  <Dialog.Content>
+                    <Dialog.Header display="flex" justifyContent="space-between">
+                      <Dialog.Title>Confirm Logout</Dialog.Title>
+                      <CloseButton
+                        size="sm"
+                        onClick={() => setDialogOpen(false)}
+                      />
+                    </Dialog.Header>
+                    <Dialog.Body>Are you sure you want to logout?</Dialog.Body>
+                    <Dialog.Footer
+                      display="flex"
+                      gap={3}
+                      justifyContent="flex-end"
+                    >
+                      <Button
+                        onClick={() => setDialogOpen(false)}
+                        variant="ghost"
+                      >
+                        Cancel
+                      </Button>
+                      <Dialog.ActionTrigger asChild>
+                        <Button
+                          colorScheme="red"
+                          onClick={handleLogout}
+                          isLoading={loading}
+                        >
+                          Logout
+                        </Button>
+                      </Dialog.ActionTrigger>
+                    </Dialog.Footer>
+                  </Dialog.Content>
+                </Dialog.Positioner>
+              </Portal>
+            </Dialog.Root>
+          ) : (
+            <Button
+              as={RouterLink}
+              to="/signin"
+              variant="ghost"
+              size="sm"
+              mr={2}
+              display={{ base: "none", md: "inline-flex" }}
+            >
+              Login
+            </Button>
+          )}
           <Button
             as={RouterLink}
             to="/dashboard"
@@ -106,7 +185,6 @@ const Navbar = () => {
               >
                 <FiMenu size={24} />
               </Box>
-              
             </Drawer.Trigger>
             <Portal>
               <Drawer.Backdrop />
@@ -144,15 +222,26 @@ const Navbar = () => {
                       >
                         Post Property
                       </Button>
-                      <Button
-                        as={RouterLink}
-                        to="/signin"
-                        variant="ghost"
-                        size="sm"
-                        w="full"
-                      >
-                        Logout
-                      </Button>
+                      {user ? (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          w="full"
+                          onClick={() => setDialogOpen(true)}
+                        >
+                          Logout
+                        </Button>
+                      ) : (
+                        <Button
+                          as={RouterLink}
+                          to="/signin"
+                          variant="ghost"
+                          size="sm"
+                          w="full"
+                        >
+                          Login
+                        </Button>
+                      )}
                       <Button
                         as={RouterLink}
                         to="/dashboard"

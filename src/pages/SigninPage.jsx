@@ -38,11 +38,19 @@ const SigninPage = () => {
     if (Object.keys(errs).length === 0) {
       try {
         const res = await signin(form);
-        // Store user info in Zustand store
+        // Store user info in Zustand store, including JWT token from header
+        const token =
+          res.headers["authorization"] || res.headers["Authorization"];
         if (res.data && res.data.data) {
-          setUser(res.data.data);
+          setUser({
+            ...res.data.data,
+            token: token ? token.replace("Bearer ", "") : undefined,
+          });
         } else {
-          setUser({ email: form.email });
+          setUser({
+            email: form.email,
+            token: token ? token.replace("Bearer ", "") : undefined,
+          });
         }
         navigate("/dashboard");
       } catch (err) {
