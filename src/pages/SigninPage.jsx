@@ -15,12 +15,14 @@ import { useState } from "react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import logo from "../assets/property.png";
 import { signin } from "../api";
+import { useAppStore } from "../store";
 
 const SigninPage = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [serverError, setServerError] = useState("");
   const navigate = useNavigate();
+  const setUser = useAppStore((state) => state.setUser);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -35,7 +37,13 @@ const SigninPage = () => {
     setServerError("");
     if (Object.keys(errs).length === 0) {
       try {
-        await signin(form);
+        const res = await signin(form);
+        // Store user info in Zustand store
+        if (res.data && res.data.data) {
+          setUser(res.data.data);
+        } else {
+          setUser({ email: form.email });
+        }
         navigate("/dashboard");
       } catch (err) {
         if (err.response && err.response.data && err.response.data.status) {
