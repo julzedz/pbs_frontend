@@ -54,4 +54,12 @@ export const signin = async (data) => {
   return API.post("/users/sign_in", payload);
 };
 
+export const getStates = async () => {
+  return API.get("/api/v1/states");
+};
+
+export const getLocalities = async (stateId) => {
+  return API.get(`/api/v1/localities?state_id=${stateId}`);
+};
+
 export default API;
