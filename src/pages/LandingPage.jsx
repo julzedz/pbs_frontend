@@ -23,7 +23,7 @@ const featuredHomes = [
     price: "₦250,000,000",
     location: "Ajah Lagos",
     image:
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvdXNlJTIwZm9yJTIwc2FsZXxlbnwwfHwwfHx8MA%3D%3D",
   },
   {
     id: 2,
@@ -31,7 +31,7 @@ const featuredHomes = [
     price: "₦340,000/day",
     location: "phase 1 Lekki Lagos",
     image:
-      "https://images.unsplash.com/photo-1460518451285-97b6aa326961?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1707484687082-9493754d389f?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVudGhvdXNlJTIwZm9yJTIwc2FsZXxlbnwwfHwwfHx8MA%3D%3D",
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ const featuredHomes = [
     price: "₦270,000/day",
     location: "Joneers court Lekki Phase 1 Lekki Lagos",
     image:
-      "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1560184897-ae75f418493e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGhvdXNlJTIwZm9yJTIwc2FsZXxlbnwwfHwwfHx8MA%3D%3D",
   },
 ];
 
