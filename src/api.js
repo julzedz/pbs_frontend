@@ -62,4 +62,8 @@ export const getLocalities = async (stateId) => {
   return API.get(`/api/v1/localities?state_id=${stateId}`);
 };
 
+export const getMyProperties = async (userId) => {
+  return API.get(`/api/v1/properties?user_id=${userId}`);
+};
+
 export default API;

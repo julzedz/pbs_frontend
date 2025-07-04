@@ -13,8 +13,11 @@ import BuyPage from "./pages/BuyPage";
 import RentPage from "./pages/RentPage";
 import AgentPage from "./pages/AgentPage";
 import PropertyDetailsPage from "./pages/PropertyDetailsPage";
+import MyListingsPage from "./pages/MyListingsPage";
 import { useAppStore } from "./store";
 import React from "react";
+import { Box, Text } from "@chakra-ui/react";
+import { Toaster } from "./components/ui/toaster";
 
 // ProtectedRoute component
 function ProtectedRoute({ children }) {
@@ -25,10 +28,21 @@ function ProtectedRoute({ children }) {
   return children;
 }
 
+function PostPropertyPage() {
+  return (
+    <Box maxW="2xl" mx="auto" py={10} px={4}>
+      <Text fontSize="2xl" fontWeight="bold">
+        Post a Property (Coming Soon)
+      </Text>
+    </Box>
+  );
+}
+
 function App() {
   return (
     <Router>
       <Navbar />
+      <Toaster />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignupPage />} />
@@ -45,12 +59,22 @@ function App() {
         <Route path="/rent" element={<RentPage />} />
         <Route path="/rent/:id" element={<PropertyDetailsPage />} />
         <Route path="/agents" element={<AgentPage />} />
-        {/* If you have a PostPropertyPage, protect it here too: */}
-        {/* <Route path="/post-property" element={
-          <ProtectedRoute>
-            <PostPropertyPage />
-          </ProtectedRoute>
-        } /> */}
+        <Route
+          path="/my-listings"
+          element={
+            <ProtectedRoute>
+              <MyListingsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/post-property"
+          element={
+            <ProtectedRoute>
+              <PostPropertyPage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );
