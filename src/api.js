@@ -3,12 +3,12 @@ import axios from "axios";
 // import { useAppStore } from "./store";
 
 const API = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:3000",
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
   },
-  withCredentials: true, // for cookies if needed
+  // withCredentials: true, // for cookies if needed
 });
 
 // Attach JWT token to all requests if present
@@ -64,6 +64,15 @@ export const getLocalities = async (stateId) => {
 
 export const getMyProperties = async (userId) => {
   return API.get(`/api/v1/properties?user_id=${userId}`);
+};
+
+export const getFeatures = async () => {
+  return API.get("/api/v1/features");
+};
+
+export const createProperty = async (formData) => {
+  // Do not set Content-Type manually; let Axios handle it for FormData
+  return API.post("/api/v1/properties", formData);
 };
 
 export default API;
