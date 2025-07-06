@@ -145,7 +145,7 @@ const LandingPage = () => {
         textAlign="center"
       >
         <Heading color="black" fontSize={{ base: "2xl", md: "4xl" }} mb={4}>
-          Find your Next Home
+          Find your Next Property
         </Heading>
         <Text fontSize={{ base: "md", md: "xl" }} mb={8}>
           Buy, rent, or invest in your dream property
