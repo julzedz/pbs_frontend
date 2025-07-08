@@ -217,7 +217,9 @@ const PostPropertyPage = () => {
       form.feature_ids.forEach((id) =>
         data.append("property[feature_ids][]", id)
       );
-      if (form.picture) data.append("property[picture]", form.picture);
+      // Use the file input ref to get the file at submit time
+      const file = fileInputRef.current?.files[0];
+      if (file) data.append("property[picture]", file);
       await createProperty(data);
       toaster.create({
         description: "Property posted successfully!",
