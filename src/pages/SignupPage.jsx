@@ -62,10 +62,12 @@ const SignupPage = () => {
       maxW="md"
       mx="auto"
       mt={12}
+      mb={24}
       p={8}
       boxShadow="md"
       bg="white"
       rounded="lg"
+      minWidth={{ base: "90%", md: "md"}}
     >
       <VStack spacing={4} mb={6}>
         <Image src={logo} alt="PropertyBusStopLogo" boxSize="48px" />
