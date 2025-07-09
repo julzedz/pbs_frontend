@@ -11,21 +11,21 @@ import { BsTwitterX } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const socialLinks = [
-  { icon: BsTwitterX, label: "X", href: "https://x.com/" },
+  { icon: <BsTwitterX />, label: "X", href: "https://x.com/" },
   {
-    icon: FaInstagram,
+    icon: <FaInstagram />,
     label: "Instagram",
     href: "https://instagram.com/",
     color: "#E1306C",
   },
   {
-    icon: FaFacebook,
+    icon: <FaFacebook />,
     label: "Facebook",
     href: "https://facebook.com/",
     color: "#1877f3",
   },
   {
-    icon: FaYoutube,
+    icon: <FaYoutube />,
     label: "YouTube",
     href: "https://youtube.com/",
     color: "#FF0000",
@@ -52,14 +52,14 @@ const Footer = () => (
       {/* Left: Brand & Copyright */}
       <Stack align={{ base: "center", md: "flex-start" }} spacing={2}>
         <Text
-          fontSize="2xl"
+          fontSize={{ base: "lg", md: "2xl" }}
           fontWeight="bold"
           color="purple.300"
           letterSpacing="wide"
         >
           Property BusStop
         </Text>
-        <Text fontSize="sm" color="gray.400">
+        <Text fontSize={{ base: "xs", md: "sm" }} color="gray.400">
           &copy; {new Date().getFullYear()} Property BusStop. All rights
           reserved.
         </Text>
@@ -76,6 +76,7 @@ const Footer = () => (
             color="gray.200"
             _hover={{ color: "purple.300", textDecoration: "underline" }}
             className="transition-colors"
+            fontSize={{ base: "sm", md: "md" }}
           >
             {link.label}
           </ChakraLink>
@@ -91,12 +92,15 @@ const Footer = () => (
             target="_blank"
             rel="noopener noreferrer"
             aria-label={link.label}
-            icon={<link.icon size={24} />}
             key={link.label}
             _hover={{ bg: "gray.800" }}
             size="lg"
             className="transition-colors"
-          />
+            color={link.color}
+            variant="ghost"
+          >
+            {link.icon}
+          </IconButton>
         ))}
       </Stack>
     </Flex>
