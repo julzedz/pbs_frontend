@@ -5,7 +5,6 @@ import axios from "axios";
 const API = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:3000",
   headers: {
-    "Content-Type": "application/json",
     Accept: "application/json",
   },
   // withCredentials: true, // for cookies if needed
@@ -71,7 +70,6 @@ export const getFeatures = async () => {
 };
 
 export const createProperty = async (formData) => {
-  // Do not set Content-Type manually; let Axios handle it for FormData
   return API.post("/api/v1/properties", formData);
 };
 
