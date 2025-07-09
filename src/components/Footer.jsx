@@ -40,7 +40,7 @@ const pageLinks = [
 ];
 
 const Footer = () => (
-  <Box as="footer" bg="gray.700" color="gray.100" py={10} px={4}>
+  <Box as="footer" bg="gray.700" color="gray.100" py={{ base: 4, md: 10 }} px={4}>
     <Flex
       direction={{ base: "column", md: "row" }}
       align="center"
@@ -66,7 +66,7 @@ const Footer = () => (
       </Stack>
 
       {/* Center: Page Links */}
-      <Stack direction="row" spacing={6} mb={{ base: 4, md: 0 }}>
+      <Stack direction="row" spacing={6} mb={{ base: 0, md: 0 }}>
         {pageLinks.map((link) => (
           <ChakraLink
             as={Link}
@@ -76,7 +76,7 @@ const Footer = () => (
             color="gray.200"
             _hover={{ color: "purple.300", textDecoration: "underline" }}
             className="transition-colors"
-            fontSize={{ base: "sm", md: "md" }}
+            fontSize={{ base: "xs", md: "md" }}
           >
             {link.label}
           </ChakraLink>
