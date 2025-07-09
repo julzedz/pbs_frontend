@@ -29,6 +29,7 @@ const Navbar = () => {
   const btnRef = useRef();
   const [dialogOpen, setDialogOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false); // Add drawer state
   const navigate = useNavigate();
   const location = useLocation();
   const user = useAppStore((state) => state.user);
@@ -198,7 +199,7 @@ const Navbar = () => {
             My Dashboard
           </Button>
           {/* Mobile Drawer Trigger */}
-          <Drawer.Root>
+          <Drawer.Root open={drawerOpen} onOpenChange={setDrawerOpen}>
             <Drawer.Trigger asChild>
               <Box
                 ref={btnRef}
@@ -232,6 +233,7 @@ const Navbar = () => {
                           py={1}
                           rounded={"md"}
                           _hover={{ bg: "gray.100" }}
+                          onClick={() => setDrawerOpen(false)}
                         >
                           {link.label}
                         </Link>
@@ -241,6 +243,7 @@ const Navbar = () => {
                         size="sm"
                         w="full"
                         onClick={() => {
+                          setDrawerOpen(false);
                           if (user) {
                             navigate("/post-property");
                           } else {
@@ -255,7 +258,10 @@ const Navbar = () => {
                           variant="ghost"
                           size="sm"
                           w="full"
-                          onClick={() => setDialogOpen(true)}
+                          onClick={() => {
+                            setDrawerOpen(false);
+                            setDialogOpen(true);
+                          }}
                         >
                           Logout
                         </Button>
@@ -266,6 +272,7 @@ const Navbar = () => {
                           variant="ghost"
                           size="sm"
                           w="full"
+                          onClick={() => setDrawerOpen(false)}
                         >
                           Login
                         </Button>
@@ -276,6 +283,7 @@ const Navbar = () => {
                         variant="ghost"
                         size="sm"
                         w="full"
+                        onClick={() => setDrawerOpen(false)}
                       >
                         My Dashboard
                       </Button>
