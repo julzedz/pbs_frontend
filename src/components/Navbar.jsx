@@ -37,14 +37,17 @@ const Navbar = () => {
   const handleLogout = async () => {
     setLoading(true);
     try {
+      // This request might fail if the token is already expired
       await API.delete("/users/sign_out");
+    } catch (error) {
+      // Log the error for debugging purposes, but don't block the logout
+      console.error("Server-side logout failed:", error);
+    } finally {
+      // Always perform client-side cleanup
       logout();
       setDialogOpen(false);
-      navigate("/signin");
-    } catch {
-      // Optionally show error
-    } finally {
       setLoading(false);
+      navigate("/signin");
     }
   };
 

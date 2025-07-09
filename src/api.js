@@ -1,6 +1,5 @@
 import axios from "axios";
-// Import only for type, not for hook usage
-// import { useAppStore } from "./store";
+import { useAppStore } from "./store";
 
 const API = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:3000",
@@ -9,6 +8,20 @@ const API = axios.create({
   },
   // withCredentials: true, // for cookies if needed
 });
+
+API.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      // Token is invalid or expired
+      // Use the logout function directly from the store
+      useAppStore.getState().logout();
+      // Redirect to the sign-in page
+      window.location.href = "/signin";
+    }
+    return Promise.reject(error);
+  }
+);
 
 // Attach JWT token to all requests if present
 API.interceptors.request.use(
