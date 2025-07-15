@@ -36,7 +36,7 @@ function App() {
       <Router>
         <Navbar />
         <Toaster />
-        <Box flex="1 0 auto" display="flex" flexDirection="column">
+        <Box flex="1 0 auto" mb={{ base: 10, md: 36 }} display="flex" flexDirection="column">
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/signup" element={<SignupPage />} />
