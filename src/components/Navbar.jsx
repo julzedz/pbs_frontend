@@ -22,7 +22,6 @@ import { useAppStore } from "../store";
 const Links = [
   { label: "Buy", to: "/buy" },
   { label: "Rent", to: "/rent" },
-  { label: "Agents", to: "/agents" },
 ];
 
 const Navbar = () => {
@@ -91,12 +90,15 @@ const Navbar = () => {
                   py={1}
                   rounded={"md"}
                   _hover={{ bg: "gray.100" }}
-                  borderBottom={
-                    isActive ? "2px solid #805ad5" : "2px solid transparent"
-                  }
                   color={isActive ? "purple.700" : undefined}
                   fontWeight={isActive ? "bold" : undefined}
                   transition="border-bottom 0.2s"
+                  textDecoration={isActive ? "underline" : "none"}
+                  _focus={{
+                    outline: "none"
+                  }}
+                  _active={{ outline: "none" }}
+                  _focusVisible={{ outline: "none" }}
                 >
                   {link.label}
                 </Link>
