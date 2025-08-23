@@ -211,17 +211,16 @@ const Navbar = () => {
               </Box>
             </Drawer.Trigger>
             <Portal>
-              <Drawer.Backdrop />
+              <Drawer.Backdrop onClick={() => setDrawerOpen(false)} />
               <Drawer.Positioner>
                 <Drawer.Content minW="60vw" maxW="80vw" bg="white">
-                  <Drawer.CloseTrigger asChild>
-                    <CloseButton
-                      size="lg"
-                      position="absolute"
-                      top={2}
-                      right={2}
-                    />
-                  </Drawer.CloseTrigger>
+                  <CloseButton
+                    size="lg"
+                    position="absolute"
+                    top={2}
+                    right={2}
+                    onClick={() => setDrawerOpen(false)}
+                  />
                   <Drawer.Body pt={12} px={4}>
                     <Stack as={"nav"} spacing={4} mt={4}>
                       {Links.map((link) => (
