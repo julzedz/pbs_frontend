@@ -446,7 +446,7 @@ const PostPropertyPage = () => {
                 Tell us more about this listing
               </Text>
               <Stack spacing={4}>
-                <Flex gap={4} flexWrap={{ base: "wrap", md: "nowrap" }}>
+                <Flex gap={4} flexDir={{ base: "column", md: "row" }} flexWrap={{ base: "wrap", md: "nowrap" }}>
                   <Box flex={1}>
                     <Text mb={1} fontWeight="medium">
                       Price
@@ -572,7 +572,7 @@ const PostPropertyPage = () => {
                 </Box>
                 <Box>
                   <Text mb={1} fontWeight="medium">
-                    Instagram Video Link (optional)
+                    Social Media Video Link (optional)
                   </Text>
                   <Input
                     name="instagram_video_link"
