@@ -82,7 +82,7 @@ const DashboardPage = () => {
         mb={8}
         align="stretch"
       >
-        <Box flex={1} maxW="full">
+        <Box w={{ base: "90vw", md: "full" }} flex={1} maxW="full">
           <ProfileCard user={user} large />
         </Box>
         <Box

@@ -14,6 +14,7 @@ import RentPage from "./pages/RentPage";
 import AgentPage from "./pages/AgentPage";
 import PropertyDetailsPage from "./pages/PropertyDetailsPage";
 import MyListingsPage from "./pages/MyListingsPage";
+import EditProfilePage from "./pages/EditProfilePage";
 import { useAppStore } from "./store";
 import React from "react";
 import { Toaster } from "./components/ui/toaster";
@@ -66,6 +67,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <PostPropertyPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/edit-profile"
+              element={
+                <ProtectedRoute>
+                  <EditProfilePage />
                 </ProtectedRoute>
               }
             />

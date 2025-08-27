@@ -9,8 +9,10 @@ import {
   VisuallyHidden,
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProfileCard = ({ user, large }) => {
+  const navigate = useNavigate();
   const [profilePic, setProfilePic] = useState(user?.profilePicUrl || "");
   const fileInputRef = useRef();
 
@@ -38,7 +40,7 @@ const ProfileCard = ({ user, large }) => {
         direction="row"
         align="center"
         spacing={large ? 6 : 4}
-        mb={large ? 4 : 2}
+        mb={large ? 8 : 2}
       >
         <Avatar.Root size={large ? "2xl" : "lg"}>
           {profilePic ? (
@@ -67,7 +69,7 @@ const ProfileCard = ({ user, large }) => {
       <Text
         fontWeight="bold"
         fontSize={large ? "2xl" : "lg"}
-        mb={large ? 1 : 0}
+        mb={large ? 4 : 0}
       >
         {user.first_name} {user.last_name}
       </Text>
@@ -77,10 +79,11 @@ const ProfileCard = ({ user, large }) => {
       <Text color="gray.600" fontSize={large ? "lg" : "sm"} mb={large ? 1 : 0}>
         {user.telephone}
       </Text>
-      <Text color="gray.500" fontSize={large ? "md" : "xs"} mt={large ? 2 : 1}>
+      <Text color="gray.500" fontSize={large ? "md" : "xs"} mt={large ? 4 : 1}>
         Member Since:{" "}
         {user.created_at ? new Date(user.created_at).toLocaleDateString() : "-"}
       </Text>
+      <Button variant="outline" mt={8} onClick={() => navigate("/edit-profile")}>Edit Profile</Button>
     </Box>
   );
 };
