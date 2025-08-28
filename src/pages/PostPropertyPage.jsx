@@ -45,6 +45,8 @@ const PostPropertyPage = () => {
     area_size: "",
     feature_ids: [],
     description: "",
+    contact_name: "",
+    contact_phone: "",
     instagram_video_link: "",
     picture: null,
   });
@@ -127,7 +129,9 @@ const PostPropertyPage = () => {
         !!form.price &&
         !!form.bedrooms &&
         !!form.bathrooms &&
-        !!form.description
+        !!form.description &&
+        !!form.contact_name &&
+        !!form.contact_phone
       );
     } else if (customStep === 2) {
       return !!form.picture;
@@ -159,6 +163,8 @@ const PostPropertyPage = () => {
       if (!form.bedrooms) stepErrors.bedrooms = "This field is required";
       if (!form.bathrooms) stepErrors.bathrooms = "This field is required";
       if (!form.description) stepErrors.description = "This field is required";
+      if (!form.contact_name) stepErrors.contact_name = "This field is required";
+      if (!form.contact_phone) stepErrors.contact_phone = "This field is required";
     } else if (customStep === 2) {
       if (!form.picture) stepErrors.picture = "This field is required";
     }
@@ -207,6 +213,8 @@ const PostPropertyPage = () => {
       data.append("property[price]", form.price);
       data.append("property[bedrooms]", form.bedrooms);
       data.append("property[bathrooms]", form.bathrooms);
+      data.append("property[contact_name]", form.contact_name);
+      data.append("property[contact_phone]", form.contact_phone);
       if (form.area_size) data.append("property[area_size]", form.area_size);
       data.append("property[description]", form.description);
       if (form.instagram_video_link)
@@ -580,6 +588,27 @@ const PostPropertyPage = () => {
                     onChange={handleChange}
                   />
                 </Box>
+                <Box>
+                  <Text mb={1} fontWeight="medium">
+                    Contact Name
+                  </Text>
+                  <Input
+                    name="contact_name"
+                    value={form.contact_name}
+                    onChange={handleChange}
+                  />
+                </Box>
+                <Box>
+                  <Text mb={1} fontWeight="medium">
+                    Contact Phone Number
+                  </Text>
+                  <Input
+                    name="contact_phone"
+                    value={form.contact_phone}
+                    onChange={handleChange}
+                  />
+                </Box>
+                
               </Stack>
             </Box>
           </Steps.Content>
