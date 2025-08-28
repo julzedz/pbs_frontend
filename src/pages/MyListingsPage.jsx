@@ -7,6 +7,7 @@ import PropertyCard from "../components/PropertyCard";
 
 const MyListingsPage = () => {
   const user = useAppStore((state) => state.user);
+  const deletedPropertyIds = useAppStore((s) => s.deletedPropertyIds);
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -27,6 +28,8 @@ const MyListingsPage = () => {
     if (user?.id) fetchMyProperties();
   }, [user]);
 
+  const visible = properties.filter((p) => !deletedPropertyIds.includes(p.id));
+
   if (loading)
     return (
       <Center minH="60vh">
@@ -46,10 +49,11 @@ const MyListingsPage = () => {
         My Listings
       </Text>
       <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} gap={4} spacing={6}>
-        {properties.map((property) => (
+        {visible.map((property) => (
           <PropertyCard
             key={property.id}
             property={property}
+            isOwner
             onClick={() => navigate(`/rent/${property.id}`)}
           />
         ))}

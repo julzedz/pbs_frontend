@@ -11,6 +11,7 @@ const getUserFromStorage = () => {
 
 export const useAppStore = create((set) => ({
   user: getUserFromStorage(),
+  deletedPropertyIds: [],
   setUser: (user) => {
     if (user) {
       localStorage.setItem("user", JSON.stringify(user));
@@ -19,9 +20,15 @@ export const useAppStore = create((set) => ({
     }
     set({ user });
   },
+  markPropertyDeleted: (propertyId) =>
+    set((state) => ({
+      deletedPropertyIds: state.deletedPropertyIds.includes(propertyId)
+        ? state.deletedPropertyIds
+        : [...state.deletedPropertyIds, propertyId],
+    })),
   logout: () => {
     localStorage.removeItem("user");
-    set({ user: null });
+    set({ user: null, deletedPropertyIds: [] });
   },
 }));
 

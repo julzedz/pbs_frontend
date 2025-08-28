@@ -99,4 +99,8 @@ export const updateUserProfile = async (data) => {
   return API.put("/users", payload);
 };
 
+export const deleteProperty = async (propertyId) => {
+  return API.delete(`/api/v1/properties/${propertyId}.json`);
+};
+
 export default API;

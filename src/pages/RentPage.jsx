@@ -3,6 +3,7 @@ import { Box, SimpleGrid, Spinner, Text, Center } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import API from "../api";
 import PropertyCard from "../components/PropertyCard";
+import { useAppStore } from "../store";
 
 const RentPage = () => {
   const [properties, setProperties] = useState([]);
@@ -10,6 +11,7 @@ const RentPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const deletedPropertyIds = useAppStore((s) => s.deletedPropertyIds);
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -28,9 +30,9 @@ const RentPage = () => {
   }, []);
 
   // Filter for rent properties
-  const rentProperties = properties.filter(
-    (p) => p.attributes.purpose === "rent"
-  );
+  const rentProperties = properties
+    .filter((p) => p.attributes.purpose === "rent")
+    .filter((p) => !deletedPropertyIds.includes(p.id));
 
   if (loading)
     return (

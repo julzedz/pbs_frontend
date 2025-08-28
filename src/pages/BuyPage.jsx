@@ -3,12 +3,14 @@ import { Box, SimpleGrid, Spinner, Text, Center } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import API from "../api";
 import PropertyCard from "../components/PropertyCard";
+import { useAppStore } from "../store";
 
 const BuyPage = () => {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const deletedPropertyIds = useAppStore((s) => s.deletedPropertyIds);
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -26,9 +28,9 @@ const BuyPage = () => {
   }, []);
 
   // Filter for sale properties
-  const saleProperties = properties.filter(
-    (p) => p.attributes.purpose === "sale"
-  );
+  const saleProperties = properties
+    .filter((p) => p.attributes.purpose === "sale")
+    .filter((p) => !deletedPropertyIds.includes(p.id));
 
   if (loading)
     return (
