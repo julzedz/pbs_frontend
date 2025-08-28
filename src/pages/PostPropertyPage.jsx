@@ -249,8 +249,8 @@ const PostPropertyPage = () => {
   // Steps definition
   const steps = [
     { title: "Address" },
-    { title: "Basic Info" },
-    { title: "Picture & Submit" },
+    { title: "Info" },
+    { title: "Submit" },
   ];
 
   if (loading) {
@@ -262,15 +262,15 @@ const PostPropertyPage = () => {
   }
 
   return (
-    <Box maxW="3xl" mx="auto" py={10} px={4}>
-      <Text fontSize="2xl" fontWeight="bold" mb={6}>
+    <Box maxW={{ base: "unset", md: "3xl" }} w={{ base: "full", md: "unset" }} mx="auto" py={10} px={4}>
+      <Text fontSize={{ base: "15px", md: "2xl"}} fontWeight="bold" mb={6}>
         Good day, {user.first_name} {user.last_name}
       </Text>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <Steps.Root value={step} count={steps.length}>
-          <Steps.List mb={8}>
+          <Steps.List flexWrap="wrap" mb={8}>
             {steps.map((stepObj, idx) => (
-              <Steps.Item key={idx} index={idx} title={stepObj.title}>
+              <Steps.Item fontSize={{ base: "10px", md: "unset" }} key={idx} index={idx} title={stepObj.title}>
                 <Steps.Trigger asChild>
                   <button
                     type="button"
@@ -283,7 +283,7 @@ const PostPropertyPage = () => {
                     disabled={idx > step && !isAllUpToValid(idx)}
                   >
                     <Steps.Indicator />
-                    <Steps.Title>{stepObj.title}</Steps.Title>
+                    <Steps.Title fontSize={{ base: "10px", md: "unset" }}>{stepObj.title}</Steps.Title>
                   </button>
                 </Steps.Trigger>
                 <Steps.Separator />
