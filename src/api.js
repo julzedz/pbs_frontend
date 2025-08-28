@@ -86,4 +86,17 @@ export const createProperty = async (formData) => {
   return API.post("/api/v1/properties", formData);
 };
 
+export const updateUserProfile = async (data) => {
+  // Rails expects user params nested under 'user'
+  const payload = {
+    user: {
+      first_name: data.first_name,
+      last_name: data.last_name,
+      telephone: data.telephone,
+      email: data.email,
+    },
+  };
+  return API.put("/users", payload);
+};
+
 export default API;
