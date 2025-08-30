@@ -134,6 +134,14 @@ const PropertyDetailsPage = () => {
               <b>Purpose:</b>{" "}
               {attr.purpose.charAt(0).toUpperCase() + attr.purpose.slice(1)}
             </Text>
+            <Text>
+              <b>Contact Name:</b>{" "}
+              {attr.contact_name}
+            </Text>
+            <Text>
+              <b>Contact Phone:</b>{" "}
+              {attr.contact_phone}
+            </Text>
             <Text color="purple.700" fontWeight="bold" fontSize="lg">
               ₦{Number(attr.price).toLocaleString()}
             </Text>
