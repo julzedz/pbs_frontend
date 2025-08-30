@@ -23,6 +23,8 @@ const SigninPage = () => {
   const [serverError, setServerError] = useState("");
   const navigate = useNavigate();
   const setUser = useAppStore((state) => state.setUser);
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -36,6 +38,7 @@ const SigninPage = () => {
     setErrors(errs);
     setServerError("");
     if (Object.keys(errs).length === 0) {
+      setIsLoading(true);
       try {
         const res = await signin(form);
         // Store user info in Zustand store, including JWT token from header
@@ -59,6 +62,8 @@ const SigninPage = () => {
         } else {
           setServerError("Signin failed. Please try again.");
         }
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -120,7 +125,7 @@ const SigninPage = () => {
                 </Text>
               )}
             </Field.Root>
-            <Button colorScheme="purple" type="submit" w="full">
+            <Button colorScheme="purple" type="submit" w="full" loading={isLoading} loadingText="Signing in...">
               Sign In
             </Button>
           </VStack>
