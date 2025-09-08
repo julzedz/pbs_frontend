@@ -196,7 +196,7 @@ const LandingPage = () => {
             </Flex>
             <Flex gap={4} flexWrap={{ base: "wrap", md: "nowrap" }} mb={2}>
               <select
-                className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
+                className="searchselect block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
                 value={selectedState}
                 onChange={(e) => setSelectedState(e.target.value)}
               >
@@ -208,7 +208,7 @@ const LandingPage = () => {
                 ))}
               </select>
               <select
-                className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                className="searchselect block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
                 value={selectedLocality}
                 onChange={(e) => setSelectedLocality(e.target.value)}
                 disabled={!selectedState}
@@ -221,7 +221,7 @@ const LandingPage = () => {
                 ))}
               </select>
               <select
-                className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
+                className="searchselect block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
                 value={type}
                 onChange={(e) => setType(e.target.value)}
               >
@@ -233,7 +233,7 @@ const LandingPage = () => {
                 ))}
               </select>
               <select
-                className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
+                className="searchselect block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
                 value={bedrooms}
                 onChange={(e) => setBedrooms(e.target.value)}
               >
@@ -245,7 +245,7 @@ const LandingPage = () => {
                 ))}
               </select>
               <select
-                className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
+                className="searchselect block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
                 value={minPrice}
                 onChange={(e) => setMinPrice(e.target.value)}
               >
@@ -257,7 +257,7 @@ const LandingPage = () => {
                 ))}
               </select>
               <select
-                className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
+                className="searchselect block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
                 value={maxPrice}
                 onChange={(e) => setMaxPrice(e.target.value)}
               >

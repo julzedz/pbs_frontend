@@ -7,3 +7,10 @@
     @tailwind utilities;
   }
   
+
+  @media (max-width: 425px) {
+    .searchselect {
+      width: 45%;
+      background-color: white;
+    }
+  }
