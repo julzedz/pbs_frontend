@@ -2,13 +2,16 @@ import {
   Box,
   Flex,
   Text,
+  HStack,
+  Image,
   Stack,
   Link as ChakraLink,
   IconButton,
 } from "@chakra-ui/react";
 import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa6";
 import { BsTwitterX } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
+import logo from "../assets/property.png"
 
 const socialLinks = [
   { icon: <BsTwitterX />, label: "X", href: "https://x.com/" },
@@ -40,7 +43,13 @@ const pageLinks = [
 ];
 
 const Footer = () => (
-  <Box as="footer" bg="gray.700" color="gray.100" py={{ base: 4, md: 10 }} px={4}>
+  <Box
+    as="footer"
+    bg="gray.700"
+    color="gray.100"
+    py={{ base: 4, md: 10 }}
+    px={4}
+  >
     <Flex
       direction={{ base: "column", md: "row" }}
       align="center"
@@ -50,7 +59,15 @@ const Footer = () => (
       gap={8}
     >
       {/* Left: Brand & Copyright */}
-      <Stack align={{ base: "center", md: "flex-start" }} spacing={2}>
+      <RouterLink to="/">
+        <HStack mr={8}>
+          <Image src={logo} alt="PropertyBusStopLogo" boxSize="32px" mr={1} />
+          <Text fontSize="md" fontWeight="bold" color="purple.300">
+            Property BusStop
+          </Text>
+        </HStack>
+      </RouterLink>
+      {/* <Stack align={{ base: "center", md: "flex-start" }} spacing={2}>
         <Text
           fontSize={{ base: "lg", md: "2xl" }}
           fontWeight="bold"
@@ -63,13 +80,13 @@ const Footer = () => (
           &copy; {new Date().getFullYear()} Property BusStop. All rights
           reserved.
         </Text>
-      </Stack>
+      </Stack> */}
 
       {/* Center: Page Links */}
       <Stack direction="row" spacing={6} mb={{ base: 0, md: 0 }}>
         {pageLinks.map((link) => (
           <ChakraLink
-            as={Link}
+            as={RouterLink}
             to={link.to}
             key={link.label}
             fontWeight="medium"
