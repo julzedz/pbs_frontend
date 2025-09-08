@@ -181,7 +181,7 @@ const LandingPage = () => {
             ))}
           </Flex>
           <Box w="full">
-            <Flex gap={2} mb={2}>
+            <Flex gap={2} mb={2} flexDir={{ base: "column", md: "row" }}>
               <Input
                 placeholder={tab === "buy" ? "search sale" : "search rent"}
                 value={search}
