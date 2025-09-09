@@ -6,7 +6,10 @@
     @tailwind components;
     @tailwind utilities;
   }
-  
+
+  body {
+    font-family: "Spectral", serif;
+  }
 
   @media (max-width: 425px) {
     .searchselect {

@@ -62,25 +62,11 @@ const Footer = () => (
       <RouterLink to="/">
         <HStack mr={8}>
           <Image src={logo} alt="PropertyBusStopLogo" boxSize="32px" mr={1} />
-          <Text fontSize="md" fontWeight="bold" color="purple.300">
+          <Text fontSize="md" fontFamily="body" fontWeight="bold" color="purple.300">
             Property BusStop
           </Text>
         </HStack>
       </RouterLink>
-      {/* <Stack align={{ base: "center", md: "flex-start" }} spacing={2}>
-        <Text
-          fontSize={{ base: "lg", md: "2xl" }}
-          fontWeight="bold"
-          color="purple.300"
-          letterSpacing="wide"
-        >
-          Property BusStop
-        </Text>
-        <Text fontSize={{ base: "xs", md: "sm" }} color="gray.400">
-          &copy; {new Date().getFullYear()} Property BusStop. All rights
-          reserved.
-        </Text>
-      </Stack> */}
 
       {/* Center: Page Links */}
       <Stack direction="row" spacing={6} mb={{ base: 0, md: 0 }}>

@@ -82,7 +82,12 @@ const SigninPage = () => {
     >
       <VStack spacing={4} mb={6}>
         <Image src={logo} alt="PropertyBusStopLogo" boxSize="48px" />
-        <Text fontSize="2xl" fontWeight="bold" color="purple.700">
+        <Text
+          fontSize="2xl"
+          fontFamily="body"
+          fontWeight="bold"
+          color="purple.700"
+        >
           Property BusStop
         </Text>
       </VStack>
@@ -125,7 +130,13 @@ const SigninPage = () => {
                 </Text>
               )}
             </Field.Root>
-            <Button colorScheme="purple" type="submit" w="full" loading={isLoading} loadingText="Signing in...">
+            <Button
+              colorScheme="purple"
+              type="submit"
+              w="full"
+              loading={isLoading}
+              loadingText="Signing in..."
+            >
               Sign In
             </Button>
           </VStack>

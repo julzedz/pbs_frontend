@@ -144,7 +144,7 @@ const LandingPage = () => {
         px={4}
         textAlign="center"
       >
-        <Heading color="black" fontSize={{ base: "2xl", md: "4xl" }} mb={4}>
+        <Heading color="black" fontFamily="Spectral" fontWeight="800" fontSize={{ base: "2xl", md: "4xl" }} mb={4}>
           Find your Next Property
         </Heading>
         <Text fontSize={{ base: "md", md: "xl" }} mb={8}>

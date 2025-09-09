@@ -71,7 +71,12 @@ const Navbar = () => {
                 boxSize="32px"
                 mr={{ base: 0, md: 1 }}
               />
-              <Text fontSize="md" fontWeight="bold" color="purple.700">
+              <Text
+                fontSize="md"
+                fontFamily="body"
+                fontWeight="bold"
+                color="purple.700"
+              >
                 Property BusStop
               </Text>
             </HStack>
