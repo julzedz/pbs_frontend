@@ -2,7 +2,9 @@ import axios from "axios";
 import { useAppStore } from "./store";
 
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:3000",
+  baseURL: "https://server2025.propertybusstop.com" 
+  // || "http://localhost:3000"
+,
   headers: {
     Accept: "application/json",
   },
