@@ -64,7 +64,7 @@ const Navbar = () => {
       <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
         <HStack spacing={8} alignItems={"center"}>
           <RouterLink to="/">
-            <HStack mr={{ base: 0, md: 8 }}>
+            <HStack gap={{ base: 0, md: "0.5rem" }} mr={{ base: 0, md: 8 }}>
               <Image
                 src={logo}
                 alt="PropertyBusStopLogo"
@@ -127,7 +127,7 @@ const Navbar = () => {
               <Dialog.Trigger asChild>
                 <Button
                   variant="outline"
-                  size={{ base: "xs", md: "sm" }}
+                  size="sm"
                   mr={2}
                   display="inline-flex"
                   onClick={() => setDialogOpen(true)}
