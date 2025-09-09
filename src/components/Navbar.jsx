@@ -64,12 +64,12 @@ const Navbar = () => {
       <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
         <HStack spacing={8} alignItems={"center"}>
           <RouterLink to="/">
-            <HStack mr={8}>
+            <HStack mr={{ base: 0, md: 8 }}>
               <Image
                 src={logo}
                 alt="PropertyBusStopLogo"
                 boxSize="32px"
-                mr={1}
+                mr={{ base: 0, md: 1 }}
               />
               <Text fontSize="md" fontWeight="bold" color="purple.700">
                 Property BusStop
@@ -95,7 +95,7 @@ const Navbar = () => {
                   transition="border-bottom 0.2s"
                   textDecoration={isActive ? "underline" : "none"}
                   _focus={{
-                    outline: "none"
+                    outline: "none",
                   }}
                   _active={{ outline: "none" }}
                   _focusVisible={{ outline: "none" }}
@@ -126,10 +126,10 @@ const Navbar = () => {
             <Dialog.Root open={dialogOpen} onOpenChange={setDialogOpen}>
               <Dialog.Trigger asChild>
                 <Button
-                  variant="ghost"
-                  size="sm"
+                  variant="outline"
+                  size={{ base: "xs", md: "sm" }}
                   mr={2}
-                  display={{ base: "none", md: "inline-flex" }}
+                  display="inline-flex"
                   onClick={() => setDialogOpen(true)}
                 >
                   Logout
@@ -183,10 +183,10 @@ const Navbar = () => {
             <Button
               as={RouterLink}
               to="/signin"
-              variant="ghost"
-              size="sm"
+              variant="outline"
+              size={{ base: "xs", md: "sm" }}
               mr={2}
-              display={{ base: "none", md: "inline-flex" }}
+              display="inline-flex"
             >
               Login
             </Button>

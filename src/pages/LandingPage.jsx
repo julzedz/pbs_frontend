@@ -190,7 +190,7 @@ const LandingPage = () => {
                   if (e.key === "Enter") handleSearch();
                 }}
               />
-              <Button onClick={handleSearch} colorScheme="purple">
+              <Button onClick={handleSearch} marginBottom={{ base: 4, md: 0 }} colorScheme="purple">
                 Search
               </Button>
             </Flex>
