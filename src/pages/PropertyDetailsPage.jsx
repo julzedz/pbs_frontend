@@ -115,7 +115,7 @@ const PropertyDetailsPage = () => {
               <b>Bathrooms:</b> {attr.bathrooms}
             </Text>
             <Text>
-              <b>Social Media Video:</b>{" "}
+              <b>Click for more images/videos:</b>{" "}
               <ChakraLink
                 href={attr.instagram_video_link}
                 color="purple.600"
