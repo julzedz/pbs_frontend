@@ -31,21 +31,33 @@ const PropertyCard = ({ property, onClick, isOwner = false }) => {
 
   const truncateText = (str) => {
     if (!str) return "";
+    if (str.length > 25) {
+      return str.slice(0, 25) + "...";
+    }
     const words = str.split(" ");
     if (words.length > 6) {
       return words.slice(0, 6).join(" ") + "...";
     }
-    if (str.length > 25) {
-      return str.slice(0, 25) + "...";
-    }
     return str;
-  }
+  };
 
   const handleCloseDialog = () => setIsDialogOpen(false);
 
   const handleCancelDialog = (e) => {
     e.stopPropagation();
     setIsDialogOpen(false);
+  };
+
+  const truncateDesc = (str) => {
+    if (!str) return "";
+    if (str.length > 50) {
+      return str.slice(0, 50) + "...";
+    }
+    const words = str.split(" ");
+    if (words.length > 12) {
+      return words.slice(0, 12).join(" ") + "...";
+    }
+    return str;
   };
 
   const handleConfirmDelete = async () => {
@@ -112,7 +124,7 @@ const PropertyCard = ({ property, onClick, isOwner = false }) => {
           ₦{Number(price).toLocaleString()}
         </Text>
         <Text color="gray.600" fontSize="sm" noOfLines={2}>
-          {description}
+          {truncateDesc(description)}
         </Text>
         {canDelete && (
           <Button
