@@ -29,6 +29,18 @@ const PropertyCard = ({ property, onClick, isOwner = false }) => {
     setIsDialogOpen(true);
   };
 
+  const truncateText = (str) => {
+    if (!str) return "";
+    const words = str.split(" ");
+    if (words.length > 6) {
+      return words.slice(0, 6).join(" ") + "...";
+    }
+    if (str.length > 25) {
+      return str.slice(0, 25) + "...";
+    }
+    return str;
+  }
+
   const handleCloseDialog = () => setIsDialogOpen(false);
 
   const handleCancelDialog = (e) => {
@@ -84,7 +96,7 @@ const PropertyCard = ({ property, onClick, isOwner = false }) => {
       <Box p={4}>
         <Stack direction="row" align="center" mb={2}>
           <Text fontWeight="bold" fontSize="lg" flex={1} noOfLines={1}>
-            {title}
+            {truncateText(title)}
           </Text>
           <Badge
             colorScheme="purple"
