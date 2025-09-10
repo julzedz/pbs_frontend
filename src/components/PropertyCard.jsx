@@ -99,7 +99,7 @@ const PropertyCard = ({ property, onClick, isOwner = false }) => {
     >
       <Image
         src={image_url}
-        alt={title}
+        alt={truncateText(title)}
         w="100%"
         h="200px"
         objectFit="cover"
