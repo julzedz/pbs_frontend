@@ -21,3 +21,14 @@
   .searchselect {
     background-color: inherit;
   }
+
+  .main-container {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease-in, transform 0.5s ease-in;
+  }
+
+  body.loaded .main-container {
+    opacity: 1;
+    transform: translateY(0);
+  }

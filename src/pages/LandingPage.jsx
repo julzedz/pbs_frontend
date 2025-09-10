@@ -73,6 +73,12 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+  }, []);
+
+  useEffect(() => {
     getStates().then((res) => {
       setStates(res.data.data || []);
     });
@@ -137,7 +143,7 @@ const LandingPage = () => {
   ]);
 
   return (
-    <Box>
+    <Box className="main-container">
       {/* Hero Section */}
       <Box
         py={16}
