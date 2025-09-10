@@ -15,6 +15,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PropertyCard from "../components/PropertyCard";
 import API, { getStates, getLocalities } from "../api";
+import bgImage from "../assets/bgimage.webp";
 
 const featuredHomes = [
   {
@@ -139,10 +140,13 @@ const LandingPage = () => {
     <Box>
       {/* Hero Section */}
       <Box
-        bgGradient="linear(to-r, purple.700, purple.400)"
         py={16}
         px={4}
         textAlign="center"
+        bgImage={`url(${bgImage})`}
+        bgSize="cover"
+        bgPosition="center"
+        bgRepeat="no-repeat"
       >
         <Heading color="black" fontFamily="Spectral" fontWeight="800" fontSize={{ base: "2xl", md: "4xl" }} mb={4}>
           Find your Next Property
@@ -152,7 +156,7 @@ const LandingPage = () => {
         </Text>
         {/* Search Bar */}
         <Box
-          bg="white"
+          bg="#ffffffe0"
           color="gray.800"
           p={4}
           rounded="lg"
