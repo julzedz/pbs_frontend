@@ -20,6 +20,7 @@ import { toaster } from "../components/ui/toaster";
 import { useAppStore } from "../store";
 
 const MAX_FEATURES_SHOWN = 6;
+const MAX_FILE_SIZE = 1000000;
 
 const PostPropertyPage = () => {
   const user = useAppStore((state) => state.user);
@@ -100,6 +101,29 @@ const PostPropertyPage = () => {
       setForm((prev) => ({ ...prev, [name]: checked }));
     } else if (type === "file") {
       const file = e.target.files[0];
+      if (file && file.size > MAX_FILE_SIZE) {
+        setErrors((prev) => ({
+          ...prev,
+          picture: (
+            <>
+              Image size must be less than 1MB. <br />
+              <a
+                href="https://squoosh.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "#805ad5", textDecoration: "underline" }}
+              >
+                Compress your image at squoosh.app
+              </a>
+            </>
+          ),
+        }));
+        setForm((prev) => ({ ...prev, picture: null }));
+        setPicturePreview(null);
+        return;
+      } else {
+        setErrors((prev) => ({ ...prev, picture: undefined }));
+      }
       setForm((prev) => ({ ...prev, picture: file }));
       if (file) {
         const reader = new FileReader();
@@ -163,8 +187,10 @@ const PostPropertyPage = () => {
       if (!form.bedrooms) stepErrors.bedrooms = "This field is required";
       if (!form.bathrooms) stepErrors.bathrooms = "This field is required";
       if (!form.description) stepErrors.description = "This field is required";
-      if (!form.contact_name) stepErrors.contact_name = "This field is required";
-      if (!form.contact_phone) stepErrors.contact_phone = "This field is required";
+      if (!form.contact_name)
+        stepErrors.contact_name = "This field is required";
+      if (!form.contact_phone)
+        stepErrors.contact_phone = "This field is required";
     } else if (customStep === 2) {
       if (!form.picture) stepErrors.picture = "This field is required";
     }
@@ -255,11 +281,7 @@ const PostPropertyPage = () => {
   ];
 
   // Steps definition
-  const steps = [
-    { title: "Address" },
-    { title: "Info" },
-    { title: "Submit" },
-  ];
+  const steps = [{ title: "Address" }, { title: "Info" }, { title: "Submit" }];
 
   if (loading) {
     return (
@@ -270,15 +292,26 @@ const PostPropertyPage = () => {
   }
 
   return (
-    <Box maxW={{ base: "unset", md: "3xl" }} w={{ base: "full", md: "unset" }} mx="auto" py={10} px={4}>
-      <Text fontSize={{ base: "15px", md: "2xl"}} fontWeight="bold" mb={6}>
+    <Box
+      maxW={{ base: "unset", md: "3xl" }}
+      w={{ base: "full", md: "unset" }}
+      mx="auto"
+      py={10}
+      px={4}
+    >
+      <Text fontSize={{ base: "15px", md: "2xl" }} fontWeight="bold" mb={6}>
         Good day, {user.first_name} {user.last_name}
       </Text>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <Steps.Root value={step} count={steps.length}>
           <Steps.List flexWrap="wrap" mb={8}>
             {steps.map((stepObj, idx) => (
-              <Steps.Item fontSize={{ base: "10px", md: "unset" }} key={idx} index={idx} title={stepObj.title}>
+              <Steps.Item
+                fontSize={{ base: "10px", md: "unset" }}
+                key={idx}
+                index={idx}
+                title={stepObj.title}
+              >
                 <Steps.Trigger asChild>
                   <button
                     type="button"
@@ -291,7 +324,9 @@ const PostPropertyPage = () => {
                     disabled={idx > step && !isAllUpToValid(idx)}
                   >
                     <Steps.Indicator />
-                    <Steps.Title fontSize={{ base: "10px", md: "unset" }}>{stepObj.title}</Steps.Title>
+                    <Steps.Title fontSize={{ base: "10px", md: "unset" }}>
+                      {stepObj.title}
+                    </Steps.Title>
                   </button>
                 </Steps.Trigger>
                 <Steps.Separator />
@@ -454,7 +489,11 @@ const PostPropertyPage = () => {
                 Tell us more about this listing
               </Text>
               <Stack spacing={4}>
-                <Flex gap={4} flexDir={{ base: "column", md: "row" }} flexWrap={{ base: "wrap", md: "nowrap" }}>
+                <Flex
+                  gap={4}
+                  flexDir={{ base: "column", md: "row" }}
+                  flexWrap={{ base: "wrap", md: "nowrap" }}
+                >
                   <Box flex={1}>
                     <Text mb={1} fontWeight="medium">
                       Price
@@ -608,7 +647,6 @@ const PostPropertyPage = () => {
                     onChange={handleChange}
                   />
                 </Box>
-                
               </Stack>
             </Box>
           </Steps.Content>
