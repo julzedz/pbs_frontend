@@ -24,7 +24,7 @@
 
   .main-container {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(20px);
     transition: opacity 1.5s ease-in, transform 1.5s ease-in;
   }
 
