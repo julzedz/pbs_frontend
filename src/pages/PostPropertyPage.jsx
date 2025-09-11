@@ -101,31 +101,60 @@ const PostPropertyPage = () => {
       setForm((prev) => ({ ...prev, [name]: checked }));
     } else if (type === "file") {
       const file = e.target.files[0];
-      if (file && file.size > MAX_FILE_SIZE) {
-        setErrors((prev) => ({
-          ...prev,
-          picture: (
-            <>
-              Image size must be less than 1MB. <br />
-              <a
-                href="https://squoosh.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: "#805ad5", textDecoration: "underline" }}
-              >
-                Compress your image at squoosh.app
-              </a>
-            </>
-          ),
-        }));
-        setForm((prev) => ({ ...prev, picture: null }));
-        setPicturePreview(null);
-        return;
-      } else {
-        setErrors((prev) => ({ ...prev, picture: undefined }));
-      }
-      setForm((prev) => ({ ...prev, picture: file }));
       if (file) {
+        // Block .heic/.HEIC files
+        if (file.name.toLowerCase().endsWith(".heic")) {
+          setErrors((prev) => ({
+            ...prev,
+            picture: (
+              <>
+                HEIC images are not supported. <br />
+                <p>
+                  Convert your image to JPG or PNG at
+                  <a
+                    href="https://heictojpg.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: "#805ad5", textDecoration: "underline" }}
+                  >
+                    heictojpg.com
+                  </a>
+                </p>
+              </>
+            ),
+          }));
+          setForm((prev) => ({ ...prev, picture: null }));
+          setPicturePreview(null);
+          return;
+        }
+        // Check file size
+        if (file.size > MAX_FILE_SIZE) {
+          setErrors((prev) => ({
+            ...prev,
+            picture: (
+              <>
+                Image size must be less than 1MB. <br />
+                <p>
+                  Compress your image at
+                  <a
+                    href="https://squoosh.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: "#805ad5", textDecoration: "underline" }}
+                  >
+                    squoosh.app
+                  </a>
+                </p>
+              </>
+            ),
+          }));
+          setForm((prev) => ({ ...prev, picture: null }));
+          setPicturePreview(null);
+          return;
+        } else {
+          setErrors((prev) => ({ ...prev, picture: undefined }));
+        }
+        setForm((prev) => ({ ...prev, picture: file }));
         const reader = new FileReader();
         reader.onload = (ev) => setPicturePreview(ev.target.result);
         reader.readAsDataURL(file);
