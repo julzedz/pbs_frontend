@@ -73,9 +73,13 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    window.addEventListener('load', () => {
-      document.body.classList.add('loaded');
-    });
+    const onLoad = () => document.body.classList.add('loaded');
+    if (document.readyState === 'complete') {
+      onLoad();
+    } else {
+      window.addEventListener('load', onLoad);
+      return () => window.removeEventListener('load', onLoad);
+    }
   }, []);
 
   useEffect(() => {
