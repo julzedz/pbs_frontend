@@ -15,7 +15,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PropertyCard from "../components/PropertyCard";
 import API, { getStates, getLocalities } from "../api";
-import bgImage from "../assets/bgimage.webp";
+import bgImage from "../assets/bgimage1.webp";
 
 const featuredHomes = [
   {
