@@ -102,15 +102,15 @@ const PostPropertyPage = () => {
     } else if (type === "file") {
       const file = e.target.files[0];
       if (file) {
-        // Block .heic/.HEIC files
-        if (file.name.toLowerCase().endsWith(".heic")) {
+        const fileName = file.name.trim().toLowerCase();
+        if (fileName.endsWith(".heic")) {
           setErrors((prev) => ({
             ...prev,
             picture: (
               <>
                 HEIC images are not supported. <br />
                 <p>
-                  Convert your image to JPG or PNG at
+                  Convert your image to JPG or PNG at{" "}
                   <a
                     href="https://heictojpg.com/"
                     target="_blank"
@@ -135,7 +135,7 @@ const PostPropertyPage = () => {
               <>
                 Image size must be less than 1MB. <br />
                 <p>
-                  Compress your image at
+                  Compress your image at{" "}
                   <a
                     href="https://squoosh.app"
                     target="_blank"
@@ -688,7 +688,7 @@ const PostPropertyPage = () => {
               </Text>
               <Input
                 type="file"
-                accept="image/*"
+                accept="image/*,.heic,.HEIC"
                 name="picture"
                 onChange={handleChange}
                 ref={fileInputRef}
