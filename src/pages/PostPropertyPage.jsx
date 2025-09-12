@@ -332,7 +332,10 @@ const PostPropertyPage = () => {
       <Text fontSize={{ base: "15px", md: "2xl" }} fontWeight="bold" mb={6}>
         Good day, {user.first_name} {user.last_name}
       </Text>
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
+      <form
+        onSubmit={handleSubmit}
+        encType="multipart/form-data"
+      >
         <Steps.Root value={step} count={steps.length}>
           <Steps.List flexWrap="wrap" mb={8}>
             {steps.map((stepObj, idx) => (
@@ -715,9 +718,10 @@ const PostPropertyPage = () => {
               size="lg"
               type="submit"
               isLoading={submitting}
+              disabled={submitting}
               w="full"
             >
-              Submit Property
+              {submitting ? "Submitting..." : "Submit Property"}
             </Button>
           </Steps.Content>
 
