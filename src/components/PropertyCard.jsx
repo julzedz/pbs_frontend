@@ -18,7 +18,7 @@ const PropertyCard = ({ property, onClick, isOwner = false }) => {
   const { title, price, description, image_url, property_type } =
     property.attributes;
   const markPropertyDeleted = useAppStore((s) => s.markPropertyDeleted);
-  const user = useAppStore((s) => s.user);
+  // const user = useAppStore((s) => s.user);
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -83,7 +83,7 @@ const PropertyCard = ({ property, onClick, isOwner = false }) => {
     }
   };
 
-  const canDelete = isOwner || property.attributes?.user_id === user?.id;
+  const canDelete = isOwner;
 
   return (
     <Box
