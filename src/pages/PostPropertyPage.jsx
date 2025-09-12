@@ -103,6 +103,7 @@ const PostPropertyPage = () => {
       const file = e.target.files[0];
       if (file) {
         const fileName = file.name.trim().toLowerCase();
+        // Block .heic/.HEIC files (robust check)
         if (fileName.endsWith(".heic")) {
           setErrors((prev) => ({
             ...prev,
@@ -151,9 +152,9 @@ const PostPropertyPage = () => {
           setForm((prev) => ({ ...prev, picture: null }));
           setPicturePreview(null);
           return;
-        } else {
-          setErrors((prev) => ({ ...prev, picture: undefined }));
         }
+        // Only preview if all checks pass
+        setErrors((prev) => ({ ...prev, picture: undefined }));
         setForm((prev) => ({ ...prev, picture: file }));
         const reader = new FileReader();
         reader.onload = (ev) => setPicturePreview(ev.target.result);
