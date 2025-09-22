@@ -13,7 +13,7 @@ import {
   Dialog,
 } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
-import { Link as RouterLink, useNavigate, useLocation } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 import logo from "../assets/property.png";
 import API from "../api";
@@ -30,7 +30,6 @@ const Navbar = () => {
   const [loading, setLoading] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false); // Add drawer state
   const navigate = useNavigate();
-  const location = useLocation();
   const user = useAppStore((state) => state.user);
   const logout = useAppStore((state) => state.logout);
 
@@ -83,9 +82,6 @@ const Navbar = () => {
           </RouterLink>
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
             {Links.map((link) => {
-              const isActive =
-                location.pathname === link.to ||
-                (link.to !== "/" && location.pathname.startsWith(link.to));
               return (
                 <Link
                   as={RouterLink}
@@ -95,10 +91,9 @@ const Navbar = () => {
                   py={1}
                   rounded={"md"}
                   _hover={{ bg: "gray.100" }}
-                  color={isActive ? "purple.700" : undefined}
-                  fontWeight={isActive ? "bold" : undefined}
+                  fontWeight="bold"
                   transition="border-bottom 0.2s"
-                  textDecoration={isActive ? "underline" : "none"}
+                  textDecoration="none"
                   _focus={{
                     outline: "none",
                   }}

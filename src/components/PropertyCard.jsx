@@ -18,8 +18,6 @@ const PropertyCard = ({ property, onClick, isOwner = false }) => {
   const { title, price, description, image_url, property_type } =
     property.attributes;
   const markPropertyDeleted = useAppStore((s) => s.markPropertyDeleted);
-  // const user = useAppStore((s) => s.user);
-
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const cancelRef = useRef();

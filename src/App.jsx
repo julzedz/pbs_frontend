@@ -21,6 +21,7 @@ import { Toaster } from "./components/ui/toaster";
 import PostPropertyPage from "./pages/PostPropertyPage";
 import Footer from "./components/Footer";
 import { Flex, Box } from "@chakra-ui/react";
+import FeaturedPropertyPage from "./pages/FeaturedPropertyPage";
 
 // ProtectedRoute component
 function ProtectedRoute({ children }) {
@@ -52,6 +53,7 @@ function App() {
             />
             <Route path="/buy" element={<BuyPage />} />
             <Route path="/rent" element={<RentPage />} />
+            <Route path="/featured" element={<FeaturedPropertyPage />} />
             <Route path="/rent/:id" element={<PropertyDetailsPage />} />
             <Route path="/agents" element={<AgentPage />} />
             <Route
