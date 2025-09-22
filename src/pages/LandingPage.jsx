@@ -29,6 +29,18 @@ const maxPriceOptions = ["₦1,000,000", "₦10,000,000", "₦100,000,000"];
 
 const parseNaira = (val) => Number(val.replace(/[^\d]/g, ""));
 
+const truncateText = (str) => {
+  if (!str) return "";
+  if (str.length > 50) {
+    return str.slice(0, 50) + "...";
+  }
+  const words = str.split(" ");
+  if (words.length > 6) {
+    return words.slice(0, 6).join(" ") + "...";
+  }
+  return str;
+};
+
 const LandingPage = () => {
   const [search, setSearch] = useState("");
   const [type, setType] = useState("");
@@ -318,7 +330,7 @@ const LandingPage = () => {
           </Button>
         </Flex>
         <SimpleGrid columns={{ base: 1, md: 3 }} gap={6} spacing={8}>
-          {featuredHomes.map((home) => (
+          {featuredHomes.slice(0,6).map((home) => (
             <Box
               key={home.id}
               bg="white"
@@ -335,7 +347,7 @@ const LandingPage = () => {
               />
               <Box p={4}>
                 <Text color="purple.500" fontWeight="bold" fontSize="sm" mb={2}>
-                  {home.attributes.title}
+                  {truncateText(home.attributes.title)}
                 </Text>
                 <Text fontSize="xl" fontWeight="bold" mb={1}>
                   ₦{Number(home.attributes.price).toLocaleString()}
