@@ -14,35 +14,8 @@ import {
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PropertyCard from "../components/PropertyCard";
-import API, { getStates, getLocalities } from "../api";
+import API, { getStates, getLocalities, featuredProperties } from "../api";
 import bgImage from "../assets/bgimage1.webp";
-
-const featuredHomes = [
-  {
-    id: 1,
-    title: "5 BEDROOM FULLY DETACHED DUPLEX",
-    price: "₦250,000,000",
-    location: "Ajah Lagos",
-    image:
-      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvdXNlJTIwZm9yJTIwc2FsZXxlbnwwfHwwfHx8MA%3D%3D",
-  },
-  {
-    id: 2,
-    title: "LUXURY 3 BEDROOM PENTHOUSE WITH BALCONY, POOL AND GYM",
-    price: "₦340,000/day",
-    location: "phase 1 Lekki Lagos",
-    image:
-      "https://images.unsplash.com/photo-1707484687082-9493754d389f?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVudGhvdXNlJTIwZm9yJTIwc2FsZXxlbnwwfHwwfHx8MA%3D%3D",
-  },
-  {
-    id: 3,
-    title: "LUXURY WATERFRONT 3 BEDROOM APARTMENT WITH POOL AND GYM",
-    price: "₦270,000/day",
-    location: "Joneers court Lekki Phase 1 Lekki Lagos",
-    image:
-      "https://images.unsplash.com/photo-1560184897-ae75f418493e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGhvdXNlJTIwZm9yJTIwc2FsZXxlbnwwfHwwfHx8MA%3D%3D",
-  },
-];
 
 const tabOptions = [
   { value: "buy", label: "Buy", placeholder: "search sale" },
@@ -71,14 +44,21 @@ const LandingPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const [featuredHomes, setFeaturedHomes] = useState([]);
 
   useEffect(() => {
-    const onLoad = () => document.body.classList.add('loaded');
-    if (document.readyState === 'complete') {
+    featuredProperties().then((res) => {
+      setFeaturedHomes(res.data.data || []);
+    });
+  }, []);
+
+  useEffect(() => {
+    const onLoad = () => document.body.classList.add("loaded");
+    if (document.readyState === "complete") {
       onLoad();
     } else {
-      window.addEventListener('load', onLoad);
-      return () => window.removeEventListener('load', onLoad);
+      window.addEventListener("load", onLoad);
+      return () => window.removeEventListener("load", onLoad);
     }
   }, []);
 
@@ -158,7 +138,13 @@ const LandingPage = () => {
         bgPosition="center"
         bgRepeat="no-repeat"
       >
-        <Heading color="black" fontFamily="Spectral" fontWeight="800" fontSize={{ base: "2xl", md: "4xl" }} mb={4}>
+        <Heading
+          color="black"
+          fontFamily="Spectral"
+          fontWeight="800"
+          fontSize={{ base: "2xl", md: "4xl" }}
+          mb={4}
+        >
           Find your Next Property
         </Heading>
         <Text fontSize={{ base: "md", md: "xl" }} mb={8}>
@@ -174,7 +160,6 @@ const LandingPage = () => {
           mx="auto"
           boxShadow="md"
         >
-          {/* Custom Tab Buttons */}
           <Flex mb={4} gap={2}>
             {tabOptions.map((option) => (
               <Button
@@ -204,7 +189,11 @@ const LandingPage = () => {
                   if (e.key === "Enter") handleSearch();
                 }}
               />
-              <Button onClick={handleSearch} marginBottom={{ base: 4, md: 0 }} colorScheme="purple">
+              <Button
+                onClick={handleSearch}
+                marginBottom={{ base: 4, md: 0 }}
+                colorScheme="purple"
+              >
                 Search
               </Button>
             </Flex>
@@ -319,7 +308,9 @@ const LandingPage = () => {
           <Heading fontSize={{ base: "xl", md: "2xl" }}>
             Our Featured Properties
           </Heading>
-          <Button variant="link">See all</Button>
+          <Button variant="link" color="purple.500" textDecoration="underline" onClick={() => navigate("/featured")}>
+            See all
+          </Button>
         </Flex>
         <SimpleGrid columns={{ base: 1, md: 3 }} gap={6} spacing={8}>
           {featuredHomes.map((home) => (
@@ -331,20 +322,20 @@ const LandingPage = () => {
               overflow="hidden"
             >
               <Image
-                src={home.image}
-                alt={home.title}
+                src={home.attributes.image_url}
+                alt={home.attributes.title}
                 w="full"
                 h="200px"
                 objectFit="cover"
               />
               <Box p={4}>
                 <Text color="purple.500" fontWeight="bold" fontSize="sm" mb={2}>
-                  {home.title}
+                  {home.attributes.title}
                 </Text>
                 <Text fontSize="xl" fontWeight="bold" mb={1}>
-                  {home.price}
+                  {home.attributes.price}
                 </Text>
-                <Text color="gray.600">{home.location}</Text>
+                <Text color="gray.600">{`${home.attributes.street}`}</Text>
               </Box>
             </Box>
           ))}

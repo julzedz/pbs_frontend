@@ -43,7 +43,6 @@ API.interceptors.request.use(
 );
 
 export const signup = async (data) => {
-  // Rails expects user params nested under 'user'
   const payload = {
     user: {
       first_name: data.firstName,
@@ -58,7 +57,6 @@ export const signup = async (data) => {
 };
 
 export const signin = async (data) => {
-  // Rails expects user params nested under 'user'
   const payload = {
     user: {
       email: data.email,
@@ -89,7 +87,6 @@ export const createProperty = async (formData) => {
 };
 
 export const updateUserProfile = async (data) => {
-  // Rails expects user params nested under 'user'
   const payload = {
     user: {
       first_name: data.first_name,
@@ -103,6 +100,10 @@ export const updateUserProfile = async (data) => {
 
 export const deleteProperty = async (propertyId) => {
   return API.delete(`/api/v1/properties/${propertyId}.json`);
+};
+
+export const featuredProperties = async () => {
+  return API.get("/api/v1/featured_properties");
 };
 
 export default API;
