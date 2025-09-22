@@ -308,7 +308,12 @@ const LandingPage = () => {
           <Heading fontSize={{ base: "xl", md: "2xl" }}>
             Our Featured Properties
           </Heading>
-          <Button variant="link" color="purple.500" textDecoration="underline" onClick={() => navigate("/featured")}>
+          <Button
+            variant="link"
+            color="purple.500"
+            textDecoration="underline"
+            onClick={() => navigate("/featured")}
+          >
             See all
           </Button>
         </Flex>
@@ -333,7 +338,7 @@ const LandingPage = () => {
                   {home.attributes.title}
                 </Text>
                 <Text fontSize="xl" fontWeight="bold" mb={1}>
-                  {home.attributes.price}
+                  ₦{Number(home.attributes.price).toLocaleString()}
                 </Text>
                 <Text color="gray.600">{`${home.attributes.street}`}</Text>
               </Box>
