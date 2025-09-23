@@ -33,8 +33,8 @@ const parseNaira = (val) => Number(val.replace(/[^\d]/g, ""));
 
 const truncateText = (str) => {
   if (!str) return "";
-  if (str.length > 50) {
-    return str.slice(0, 50) + "...";
+  if (str.length > 30) {
+    return str.slice(0, 30) + "...";
   }
   const words = str.split(" ");
   if (words.length > 6) {
@@ -369,7 +369,7 @@ const LandingPage = () => {
                     <Text
                       color="purple.500"
                       fontWeight="bold"
-                      fontSize="sm"
+                      fontSize="xl"
                       mb={2}
                     >
                       {truncateText(home.attributes.title)}
