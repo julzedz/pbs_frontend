@@ -10,6 +10,8 @@ import {
   Flex,
   Spinner,
   Center,
+  Skeleton,
+  SkeletonText,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -57,10 +59,12 @@ const LandingPage = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const [featuredHomes, setFeaturedHomes] = useState([]);
+  const [featuredLoading, setFeaturedLoading] = useState(true);
 
   useEffect(() => {
     featuredProperties().then((res) => {
       setFeaturedHomes(res.data.data || []);
+      setFeaturedLoading(false);
     });
   }, []);
 
@@ -330,32 +334,53 @@ const LandingPage = () => {
           </Button>
         </Flex>
         <SimpleGrid columns={{ base: 1, md: 3 }} gap={6} spacing={8}>
-          {featuredHomes.slice(0,6).map((home) => (
-            <Box
-              key={home.id}
-              bg="white"
-              rounded="lg"
-              boxShadow="md"
-              overflow="hidden"
-            >
-              <Image
-                src={home.attributes.image_url}
-                alt={home.attributes.title}
-                w="full"
-                h="200px"
-                objectFit="cover"
-              />
-              <Box p={4}>
-                <Text color="purple.500" fontWeight="bold" fontSize="sm" mb={2}>
-                  {truncateText(home.attributes.title)}
-                </Text>
-                <Text fontSize="xl" fontWeight="bold" mb={1}>
-                  ₦{Number(home.attributes.price).toLocaleString()}
-                </Text>
-                <Text color="gray.600">{`${home.attributes.street}`}</Text>
-              </Box>
-            </Box>
-          ))}
+          {featuredLoading
+            ? Array.from({ length: 3 }).map((_, index) => (
+                <Box
+                  key={index}
+                  bg="white"
+                  rounded="lg"
+                  boxShadow="md"
+                  overflow="hidden"
+                >
+                  <Skeleton height="200px" />
+                  <Box p={4}>
+                    <SkeletonText mt="2" noOfLines={1} spacing="4" />
+                    <SkeletonText mt="4" noOfLines={2} spacing="4" />
+                  </Box>
+                </Box>
+              ))
+            : featuredHomes.slice(0, 6).map((home) => (
+                <Box
+                  key={home.id}
+                  bg="white"
+                  rounded="lg"
+                  boxShadow="md"
+                  overflow="hidden"
+                >
+                  <Image
+                    src={home.attributes.image_url}
+                    alt={home.attributes.title}
+                    w="full"
+                    h="200px"
+                    objectFit="cover"
+                  />
+                  <Box p={4}>
+                    <Text
+                      color="purple.500"
+                      fontWeight="bold"
+                      fontSize="sm"
+                      mb={2}
+                    >
+                      {truncateText(home.attributes.title)}
+                    </Text>
+                    <Text fontSize="xl" fontWeight="bold" mb={1}>
+                      ₦{Number(home.attributes.price).toLocaleString()}
+                    </Text>
+                    <Text color="gray.600">{`${home.attributes.street}`}</Text>
+                  </Box>
+                </Box>
+              ))}
         </SimpleGrid>
       </Box>
     </Box>
