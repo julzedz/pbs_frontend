@@ -15,7 +15,7 @@ import {
 import { FiMenu } from "react-icons/fi";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
-import logo from "../assets/property.png";
+import logo from "../assets/pbs-logo.png";
 import API from "../api";
 import { useAppStore } from "../store";
 
@@ -67,17 +67,17 @@ const Navbar = () => {
               <Image
                 src={logo}
                 alt="PropertyBusStopLogo"
-                boxSize="32px"
+                boxSize={{ base: "100px", md: "110px" }}
                 mr={{ base: 0, md: 1 }}
               />
-              <Text
+              {/* <Text
                 fontSize="md"
                 fontFamily="body"
                 fontWeight="bold"
                 color="purple.700"
               >
                 Property BusStop
-              </Text>
+              </Text> */}
             </HStack>
           </RouterLink>
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>

@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-import logo from "../assets/property.png";
+import logo from "../assets/pbs-logo.png";
 import { signin } from "../api";
 import { useAppStore } from "../store";
 
@@ -81,15 +81,15 @@ const SigninPage = () => {
       minWidth={{ base: "90%", md: "md" }}
     >
       <VStack spacing={4} mb={6}>
-        <Image src={logo} alt="PropertyBusStopLogo" boxSize="48px" />
-        <Text
+        <Image src={logo} alt="PropertyBusStopLogo" boxSize="150px" />
+        {/* <Text
           fontSize="2xl"
           fontFamily="body"
           fontWeight="bold"
           color="purple.700"
         >
           Property BusStop
-        </Text>
+        </Text> */}
       </VStack>
       <Heading mb={6} textAlign="center">
         Sign In

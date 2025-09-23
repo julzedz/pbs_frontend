@@ -11,7 +11,7 @@ import {
 import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa6";
 import { BsTwitterX } from "react-icons/bs";
 import { Link as RouterLink } from "react-router-dom";
-import logo from "../assets/property.png"
+import logo from "../assets/pbs-logo.png";
 
 const socialLinks = [
   { icon: <BsTwitterX />, label: "X", href: "https://x.com/" },
@@ -47,7 +47,7 @@ const Footer = () => (
     as="footer"
     bg="gray.700"
     color="gray.100"
-    py={{ base: 4, md: 10 }}
+    py={{ base: 4, md: 4 }}
     px={4}
   >
     <Flex
@@ -61,10 +61,10 @@ const Footer = () => (
       {/* Left: Brand & Copyright */}
       <RouterLink to="/">
         <HStack mr={8}>
-          <Image src={logo} alt="PropertyBusStopLogo" boxSize="32px" mr={1} />
-          <Text fontSize="md" fontFamily="body" fontWeight="bold" color="purple.300">
+          <Image src={logo} alt="PropertyBusStopLogo" boxSize={{ base: "70px", md: "150px" }} mr={1} />
+          {/* <Text fontSize="md" fontFamily="body" fontWeight="bold" color="purple.300">
             Property BusStop
-          </Text>
+          </Text> */}
         </HStack>
       </RouterLink>
 
