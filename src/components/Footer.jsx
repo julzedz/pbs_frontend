@@ -60,8 +60,8 @@ const Footer = () => (
     >
       {/* Left: Brand & Copyright */}
       <RouterLink to="/">
-        <HStack mr={8}>
-          <Image src={logo} alt="PropertyBusStopLogo" boxSize={{ base: "70px", md: "150px" }} mr={1} />
+        <HStack mr={{ base: 0, md: 8 }}>
+          <Image src={logo} alt="PropertyBusStopLogo" boxSize={{ base: "150px", md: "150px" }} mr={1} />
           {/* <Text fontSize="md" fontFamily="body" fontWeight="bold" color="purple.300">
             Property BusStop
           </Text> */}
