@@ -24,7 +24,7 @@ const socialLinks = [
   {
     icon: <FaFacebook />,
     label: "Facebook",
-    href: "https://facebook.com/",
+    href: "https://www.facebook.com/share/14DgBeLaGQT/?mibextid=wwXIfr",
     color: "#1877f3",
   },
   {
@@ -36,9 +36,8 @@ const socialLinks = [
 ];
 
 const pageLinks = [
-  { label: "About", to: "/about" },
-  { label: "Contact", to: "/contact" },
-  { label: "Privacy Policy", to: "/privacy" },
+  { label: "About Us", to: "/about" },
+  { label: "Contact Us", to: "/contact" },
   { label: "Terms of Service", to: "/terms" },
 ];
 
