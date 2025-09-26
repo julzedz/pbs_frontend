@@ -46,18 +46,14 @@ const AboutUs = () => {
       <VStack
         maxW={{ base: "full", md: "6xl" }}
         mx="auto"
-        mt={{ base: 0, md: 10 }}
         mb={{ base: 0, md: 10 }}
         borderRadius="lg"
-        py={{ base: 10, md: 10 }}
         px={6}
         spacing={12}
         textAlign="center"
-        // bg="rgba(255, 255, 255, 0.75)"
-        // backdropFilter="blur(3px)"
       >
         <VStack spacing={4}>
-          <Image src={logo} alt="PropertyBusStopLogo" boxSize="120px" />
+          <Image src={logo} alt="PropertyBusStopLogo" boxSize="150px" />
 
           <Heading as="h1" size="2xl" color={accentColor}>
             Our Story: Building Nigeria's Property Hub
