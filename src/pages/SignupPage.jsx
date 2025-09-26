@@ -71,9 +71,6 @@ const SignupPage = () => {
     >
       <VStack spacing={4} mb={6}>
         <Image src={logo} alt="PropertyBusStopLogo" boxSize="150px" />
-        {/* <Text fontSize="2xl" fontFamily="body" fontWeight="bold" color="purple.700">
-          Property BusStop
-        </Text> */}
       </VStack>
       <Heading mb={6} textAlign="center">
         Sign Up

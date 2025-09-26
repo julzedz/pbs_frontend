@@ -72,14 +72,6 @@ const Navbar = () => {
                 boxSize={{ base: "100px", md: "110px" }}
                 mr={{ base: 0, md: 1 }}
               />
-              {/* <Text
-                fontSize="md"
-                fontFamily="body"
-                fontWeight="bold"
-                color="purple.700"
-              >
-                Property BusStop
-              </Text> */}
             </HStack>
           </RouterLink>
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>

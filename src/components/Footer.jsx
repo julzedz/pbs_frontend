@@ -68,7 +68,6 @@ const Footer = () => {
         mx="auto"
         gap={8}
       >
-        {/* Left: Brand & Copyright */}
         <RouterLink to="/">
           <HStack mr={{ base: 0, md: 8 }}>
             <Image
@@ -77,13 +76,9 @@ const Footer = () => {
               boxSize={{ base: "150px", md: "150px" }}
               mr={1}
             />
-            {/* <Text fontSize="md" fontFamily="body" fontWeight="bold" color="purple.300">
-            Property BusStop
-          </Text> */}
           </HStack>
         </RouterLink>
 
-        {/* Center: Page Links */}
         <Stack direction="row" spacing={6} mb={{ base: 0, md: 0 }}>
           {pageLinks.map((link) => (
             <ChakraLink
@@ -104,7 +99,6 @@ const Footer = () => {
           ))}
         </Stack>
 
-        {/* Right: Social Icons */}
         <Stack direction="row" spacing={4}>
           {socialLinks.map((link) => (
             <IconButton
@@ -125,7 +119,13 @@ const Footer = () => {
           ))}
         </Stack>
       </Flex>
-      <Flex justify="space-between" align="center" flexDir={{ base: "column", md: "row" }} w="full" mt={4}>
+      <Flex
+        justify="space-between"
+        align="center"
+        flexDir={{ base: "column", md: "row" }}
+        w="full"
+        mt={4}
+      >
         <Text fontSize="sm" color="gray.500">
           &copy; {new Date().getFullYear()} Property Bus Stop. All rights
           reserved.
@@ -147,7 +147,7 @@ const Footer = () => {
             color="gray.400"
             _hover={{ color: "purple.300" }}
             fontSize={{ base: "xs", md: "xs" }}
-          _focus={{ outline: "none" }}
+            _focus={{ outline: "none" }}
           >
             julzedz
           </ChakraLink>
