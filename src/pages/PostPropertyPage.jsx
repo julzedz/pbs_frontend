@@ -20,7 +20,7 @@ import { toaster } from "../components/ui/toaster";
 import { useAppStore } from "../store";
 
 const MAX_FEATURES_SHOWN = 6;
-const MAX_FILE_SIZE = 1000000;
+const MAX_FILE_SIZE = 500000;
 
 const PostPropertyPage = () => {
   const user = useAppStore((state) => state.user);
@@ -134,7 +134,7 @@ const PostPropertyPage = () => {
             ...prev,
             picture: (
               <>
-                Image size must be less than 1MB. <br />
+                Image size must be less than 500KB. <br />
                 <p>
                   Compress your image at{" "}
                   <a
