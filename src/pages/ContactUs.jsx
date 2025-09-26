@@ -21,8 +21,9 @@ import { FaEnvelope } from "react-icons/fa6";
 import headerImage from "../assets/contactus.jpg";
 
 const ContactUs = () => {
-  const accentColor = "purple.600";
-  const subtextColor = "gray.600";
+  const accentColor = "purple.700";
+  const subtextColor = "gray.300";
+  const subtextColor2 = "gray.600";
   const cardBg = "rgba(255, 255, 255, 0.75)";
 
   const CustomDivider = (props) => (
@@ -42,7 +43,6 @@ const ContactUs = () => {
       bgSize="cover"
       bgPosition="center"
       bgRepeat="no-repeat"
-      bgColor="rgba(0, 0, 0, 0.5)"
     >
       <VStack m={0} spacing={8} textAlign="center">
         <Box>
@@ -52,7 +52,11 @@ const ContactUs = () => {
           <Heading as="h1" size="2xl" mb={3} color={accentColor}>
             Get in Touch 👋
           </Heading>
-          <Text fontSize="lg" color={subtextColor}>
+          <Text
+            px={{ base: 10, md: "auto" }}
+            fontSize="lg"
+            color={subtextColor}
+          >
             We're excited to help you with your property journey. Choose a
             method that works best for you!
           </Text>
@@ -65,6 +69,7 @@ const ContactUs = () => {
           gap={8}
           w="full"
           maxW="4xl"
+          px={{ base: 10, md: "auto" }}
         >
           <VStack
             spacing={4}
@@ -80,7 +85,7 @@ const ContactUs = () => {
             <Heading as="h3" size="md">
               Send an Email
             </Heading>
-            <Text color={subtextColor}>For detailed inquiries.</Text>
+            <Text color={subtextColor2}>For detailed inquiries.</Text>
             <Link
               href="mailto:info@propertybusstop.com"
               fontWeight="semibold"
@@ -106,7 +111,7 @@ const ContactUs = () => {
             <Heading as="h3" size="md">
               Chat or Call Us
             </Heading>
-            <Text color={subtextColor}>
+            <Text color={subtextColor2}>
               Quickest way to get answers from our team.
             </Text>
             <Link
@@ -179,7 +184,7 @@ const ContactUs = () => {
 
         <CustomDivider />
 
-        <HStack spacing={2} color={subtextColor} pt={4}>
+        <HStack mb={9} spacing={2} color={subtextColor} pt={4}>
           <Icon as={FaMapMarkerAlt} />
           <Text>Anambra, Nigeria</Text>
         </HStack>

@@ -11,12 +11,18 @@ import {
 import React from "react";
 import logo from "../assets/pbs-logo.png";
 import headerImage from "../assets/aboutus.webp";
-import { FaGlobeAfrica, FaEnvelope, FaWhatsapp, FaHandshake, FaBullseye } from "react-icons/fa";
+import {
+  FaGlobeAfrica,
+  FaEnvelope,
+  FaWhatsapp,
+  FaHandshake,
+  FaBullseye,
+} from "react-icons/fa";
 
 const AboutUs = () => {
-  const accentColor = "purple.600";
+  const accentColor = "purple.700";
   const subtextColor = "gray.600";
-  const cardBg = "#ece8e8";
+  const subtextColor2 = "gray.300";
 
   const CustomDivider = (props) => (
     <Box
@@ -38,17 +44,17 @@ const AboutUs = () => {
       bgColor="rgba(0, 0, 0, 0.5)"
     >
       <VStack
-        maxW="6xl"
+        maxW={{ base: "full", md: "6xl" }}
         mx="auto"
-        mt={10}
-        mb={10}
+        mt={{ base: 0, md: 10 }}
+        mb={{ base: 0, md: 10 }}
         borderRadius="lg"
         py={{ base: 10, md: 10 }}
         px={6}
         spacing={12}
         textAlign="center"
-        bg="rgba(255, 255, 255, 0.75)"
-        backdropFilter="blur(3px)"
+        // bg="rgba(255, 255, 255, 0.75)"
+        // backdropFilter="blur(3px)"
       >
         <VStack spacing={4}>
           <Image src={logo} alt="PropertyBusStopLogo" boxSize="120px" />
@@ -59,14 +65,23 @@ const AboutUs = () => {
 
           <CustomDivider />
 
-          <Text fontSize="lg" maxW="4xl" color="gray.700" fontWeight="medium">
-            Welcome to <Text as="span" fontWeight="bold" color={accentColor}>PropertyBusStop.com</Text> – Nigeria’s trusted online
-            marketplace for real estate. Whether you’re buying, selling, or
-            renting, we provide a simple, reliable, and accessible platform that
-            connects property owners, agents, and seekers across the country.
+          <Text
+            fontSize="lg"
+            maxW="4xl"
+            color={subtextColor2}
+            fontWeight="medium"
+          >
+            Welcome to{" "}
+            <Text as="span" fontWeight="bold" color={accentColor}>
+              PropertyBusStop.com
+            </Text>{" "}
+            – Nigeria’s trusted online marketplace for real estate. Whether
+            you’re buying, selling, or renting, we provide a simple, reliable,
+            and accessible platform that connects property owners, agents, and
+            seekers across the country.
           </Text>
         </VStack>
-        <Heading as="h2" size="xl" mt={8} color="gray.700">
+        <Heading as="h2" size="xl" mt={8} color={subtextColor2}>
           Our Core Pillars
         </Heading>
         <CustomDivider maxW="3xl" />
@@ -80,7 +95,8 @@ const AboutUs = () => {
           <VStack
             spacing={4}
             p={8}
-            bg={cardBg}
+            bg="rgba(255, 255, 255, 0.75)"
+            backdropFilter="blur(3px)"
             borderRadius="xl"
             boxShadow="2xl"
             align="center"
@@ -92,9 +108,12 @@ const AboutUs = () => {
               A Nigerian Platform
             </Heading>
             <Text color={subtextColor} fontSize="sm">
-              We are dedicated to <Text as="span" fontWeight="bold" color={accentColor}>serving the Nigerian market</Text> with integrity
-              and innovation, connecting every state and city in one reliable
-              location.
+              We are dedicated to{" "}
+              <Text as="span" fontWeight="bold" color={accentColor}>
+                serving the Nigerian market
+              </Text>{" "}
+              with integrity and innovation, connecting every state and city in
+              one reliable location.
             </Text>
             <Text fontSize="sm" fontWeight="bold" color={accentColor}>
               🌍 Local Focus, Global Standards
@@ -104,7 +123,8 @@ const AboutUs = () => {
           <VStack
             spacing={4}
             p={8}
-            bg={cardBg}
+            bg="rgba(255, 255, 255, 0.75)"
+            backdropFilter="blur(3px)"
             borderRadius="xl"
             boxShadow="2xl"
             align="center"
@@ -117,8 +137,11 @@ const AboutUs = () => {
             </Heading>
             <Text color={subtextColor} fontSize="sm">
               At Property Bus Stop, we believe finding the right property should
-              be <Text as="span" fontWeight="bold" color={accentColor}>easy and transparent</Text>. We are a one-stop hub for all
-              property listings.
+              be{" "}
+              <Text as="span" fontWeight="bold" color={accentColor}>
+                easy and transparent
+              </Text>
+              . We are a one-stop hub for all property listings.
             </Text>
             <Text fontSize="sm" fontWeight="bold" color={accentColor}>
               🔎 Clarity in Every Transaction
@@ -128,7 +151,8 @@ const AboutUs = () => {
           <VStack
             spacing={4}
             p={8}
-            bg={cardBg}
+            bg="rgba(255, 255, 255, 0.75)"
+            backdropFilter="blur(3px)"
             borderRadius="xl"
             boxShadow="2xl"
             align="center"
@@ -141,8 +165,11 @@ const AboutUs = () => {
             </Heading>
             <Text color={subtextColor} fontSize="sm">
               From houses, lands, and apartments to commercial spaces—your next
-              property deal <Text as="span" fontWeight="bold" color={accentColor}>begins here</Text>, fostering trust between all
-              parties.
+              property deal{" "}
+              <Text as="span" fontWeight="bold" color={accentColor}>
+                begins here
+              </Text>
+              , fostering trust between all parties.
             </Text>
             <Text fontSize="sm" fontWeight="bold" color={accentColor}>
               🤝 Connecting People & Property
@@ -156,7 +183,7 @@ const AboutUs = () => {
           <Heading as="h3" size="lg" mb={3} color={accentColor}>
             Property Bus Stop – Where Property Deals Begin!
           </Heading>
-          <HStack spacing={4} justify="center" color={subtextColor} pt={2}>
+          <HStack spacing={4} justify="center" color={subtextColor2} pt={2}>
             <Icon as={FaEnvelope} />
             <Text>info@propertybusstop.com</Text>
             <Icon as={FaWhatsapp} />
