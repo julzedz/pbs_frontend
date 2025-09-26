@@ -22,6 +22,8 @@ import { useAppStore } from "../store";
 const Links = [
   { label: "Buy", to: "/buy" },
   { label: "Rent", to: "/rent" },
+  { label: "About Us", to: "/about" },
+  { label: "Contact Us", to: "/contact" }
 ];
 
 const Navbar = () => {
