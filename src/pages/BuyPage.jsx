@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import {
   Box,
   SimpleGrid,
-  Spinner,
   Skeleton,
   SkeletonText,
   Text,
   Center,
   Flex,
-  Button,
+  Button
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import API from "../api";
@@ -100,7 +99,7 @@ const BuyPage = () => {
     return (
       <Center minH="60vh">
         <Box textAlign="center">
-          <Text color="red.500" mb={3}>
+          <Text color="red.400" mb={3}>
             {error}
           </Text>
           <Button onClick={() => window.location.reload()} colorScheme="purple">
