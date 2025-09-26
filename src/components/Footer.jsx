@@ -95,6 +95,9 @@ const Footer = () => {
               _hover={{ color: "purple.300", textDecoration: "underline" }}
               className="transition-colors"
               fontSize={{ base: "xs", md: "md" }}
+              _focus={{ outline: "none" }}
+              _active={{ outline: "none" }}
+              _focusVisible={{ outline: "none" }}
             >
               {link.label}
             </ChakraLink>
