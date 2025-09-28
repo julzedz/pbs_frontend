@@ -12,7 +12,7 @@ import {
 import { useState } from "react";
 import { signup } from "../api";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/pbs-logo.png";
+import logo from "../assets/pbs-logo.webp";
 
 const SignupPage = () => {
   const [form, setForm] = useState({
@@ -67,7 +67,7 @@ const SignupPage = () => {
       boxShadow="md"
       bg="white"
       rounded="lg"
-      minWidth={{ base: "90%", md: "md"}}
+      minWidth={{ base: "90%", md: "md" }}
     >
       <VStack spacing={4} mb={6}>
         <Image src={logo} alt="PropertyBusStopLogo" boxSize="150px" />

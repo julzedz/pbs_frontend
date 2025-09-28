@@ -84,7 +84,7 @@ const RentPage = () => {
   if (loading && page === 2)
     return (
       <Box maxW="7xl" mx="20px" py={8} px={4}>
-        <Flex align="baseline" justify="space-between" mb={6}>
+        <Flex align="baseline" justify="space-between" flexDir={{ base: "column", md: "row" }} mb={6}>
           <Text fontSize="2xl" fontWeight="bold">
             Properties for Rent
           </Text>

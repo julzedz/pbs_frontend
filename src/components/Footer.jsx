@@ -12,7 +12,7 @@ import { useState } from "react";
 import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa6";
 import { BsTwitterX } from "react-icons/bs";
 import { Link as RouterLink } from "react-router-dom";
-import logo from "../assets/pbs-logo.png";
+import logo from "../assets/pbs-logo.webp";
 
 const socialLinks = [
   { icon: <BsTwitterX />, label: "X", href: "https://x.com/" },
@@ -120,7 +120,7 @@ const Footer = () => {
         </Stack>
       </Flex>
       <Flex
-        justify="space-between"
+        justify={{ base: "center", md: "space-between" }}
         align="center"
         flexDir={{ base: "column", md: "row" }}
         w="full"
@@ -152,7 +152,12 @@ const Footer = () => {
             julzedz
           </ChakraLink>
         </Text>
-        <Text fontSize="sm" color="gray.300" fontWeight="bold">
+        <Text
+          fontSize="sm"
+          color="gray.300"
+          textAlign="center"
+          fontWeight="bold"
+        >
           THIS SITE IS BUILT BY{" "}
           <ChakraLink
             as="a"

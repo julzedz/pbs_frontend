@@ -9,7 +9,7 @@ import {
   Image,
   Grid,
 } from "@chakra-ui/react";
-import logo from "../assets/pbs-logo.png";
+import logo from "../assets/pbs-logo.webp";
 import React from "react";
 import {
   FaInstagram,
@@ -18,7 +18,7 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa6";
-import headerImage from "../assets/contactus.jpg";
+import headerImage from "../assets/contactus.webp";
 
 const ContactUs = () => {
   const accentColor = "purple.700";

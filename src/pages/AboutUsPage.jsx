@@ -4,12 +4,13 @@ import {
   Text,
   Icon,
   VStack,
+  Flex,
   HStack,
   Image,
   Grid,
 } from "@chakra-ui/react";
 import React from "react";
-import logo from "../assets/pbs-logo.png";
+import logo from "../assets/pbs-logo.webp";
 import headerImage from "../assets/aboutus.webp";
 import {
   FaGlobeAfrica,
@@ -20,7 +21,7 @@ import {
 } from "react-icons/fa";
 
 const AboutUs = () => {
-  const accentColor = "purple.700";
+  const accentColor = "purple.400";
   const subtextColor = "gray.600";
   const subtextColor2 = "gray.300";
 
@@ -176,15 +177,29 @@ const AboutUs = () => {
         <CustomDivider />
 
         <Box pt={4} pb={4} maxW="3xl">
-          <Heading as="h3" size="lg" mb={3} color={accentColor}>
-            Property Bus Stop – Where Property Deals Begin!
+          <Heading as="h3" size="2xl" mb={3} color={accentColor}>
+            Property Bus Stop{" "}
+            <Text as="span" display="block" fontSize="sm">
+              Where Property Deals Begin!
+            </Text>
           </Heading>
-          <HStack spacing={4} justify="center" color={subtextColor2} pt={2}>
-            <Icon as={FaEnvelope} />
-            <Text>info@propertybusstop.com</Text>
-            <Icon as={FaWhatsapp} />
-            <Text>+234 810 654 1981</Text>
-          </HStack>
+          <Flex
+            gap={4}
+            flexDir={{ base: "column", md: "row" }}
+            justify="center"
+            align="center"
+            color={subtextColor2}
+            pt={2}
+          >
+            <HStack>
+              <Icon as={FaEnvelope} />
+              <Text>info@propertybusstop.com</Text>
+            </HStack>
+            <HStack>
+              <Icon as={FaWhatsapp} />
+              <Text>+234 810 654 1981</Text>
+            </HStack>
+          </Flex>
         </Box>
       </VStack>
     </Box>

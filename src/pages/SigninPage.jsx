@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-import logo from "../assets/pbs-logo.png";
+import logo from "../assets/pbs-logo.webp";
 import { signin } from "../api";
 import { useAppStore } from "../store";
 
@@ -24,7 +24,6 @@ const SigninPage = () => {
   const navigate = useNavigate();
   const setUser = useAppStore((state) => state.setUser);
   const [isLoading, setIsLoading] = useState(false);
-
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });

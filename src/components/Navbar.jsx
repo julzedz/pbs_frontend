@@ -15,7 +15,7 @@ import {
 import { FiMenu } from "react-icons/fi";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
-import logo from "../assets/pbs-logo.png";
+import logo from "../assets/pbs-logo.webp";
 import API from "../api";
 import { useAppStore } from "../store";
 
@@ -23,7 +23,7 @@ const Links = [
   { label: "Buy", to: "/buy" },
   { label: "Rent", to: "/rent" },
   { label: "About Us", to: "/about" },
-  { label: "Contact Us", to: "/contact" }
+  { label: "Contact Us", to: "/contact" },
 ];
 
 const Navbar = () => {
