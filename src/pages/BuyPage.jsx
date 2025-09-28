@@ -7,7 +7,7 @@ import {
   Text,
   Center,
   Flex,
-  Button
+  Button,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import API from "../api";
@@ -28,7 +28,9 @@ const BuyPage = () => {
 
   const fetchProperties = async (pageNum = 1) => {
     try {
-      const res = await API.get(`/api/v1/properties?page=${pageNum}`);
+      const res = await API.get(
+        `/api/v1/properties?purpose=sale&page=${pageNum}`
+      );
       const newProperties = res.data.data;
       if (pageNum === 1) {
         setProperties(newProperties);
@@ -55,9 +57,9 @@ const BuyPage = () => {
   };
 
   // Filter for sale properties
-  const saleProperties = properties
-    .filter((p) => p.attributes.purpose === "sale")
-    .filter((p) => !deletedPropertyIds.includes(p.id));
+  const saleProperties = properties.filter(
+    (p) => !deletedPropertyIds.includes(p.id)
+  );
 
   const renderSkeletonGrid = (count = 6) => (
     <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} gap={4} spacing={6}>
@@ -83,7 +85,12 @@ const BuyPage = () => {
   if (loading && page === 2)
     return (
       <Box maxW="7xl" mx="20px" py={8} px={4}>
-        <Flex align="baseline" justify="space-between" flexDir={{ base: "column", md: "row" }} mb={6}>
+        <Flex
+          align="baseline"
+          justify="space-between"
+          flexDir={{ base: "column", md: "row" }}
+          mb={6}
+        >
           <Text fontSize="2xl" fontWeight="bold">
             Properties for Sale
           </Text>

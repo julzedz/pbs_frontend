@@ -30,7 +30,9 @@ const RentPage = () => {
 
   const fetchProperties = async (pageNum = 1) => {
     try {
-      const res = await API.get(`/api/v1/properties?page=${pageNum}`);
+      const res = await API.get(
+        `/api/v1/properties?purpose=rent&page=${pageNum}`
+      );
       const newProperties = res.data.data;
       if (pageNum === 1) {
         setProperties(newProperties);
@@ -56,9 +58,9 @@ const RentPage = () => {
     setPage((prev) => prev + 1);
   };
   // Filter for rent properties
-  const rentProperties = properties
-    .filter((p) => p.attributes.purpose === "rent")
-    .filter((p) => !deletedPropertyIds.includes(p.id));
+  const rentProperties = properties.filter(
+    (p) => !deletedPropertyIds.includes(p.id)
+  );
 
   const renderSkeletonGrid = (count = 6) => (
     <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} gap={4} spacing={6}>
@@ -84,7 +86,12 @@ const RentPage = () => {
   if (loading && page === 2)
     return (
       <Box maxW="7xl" mx="20px" py={8} px={4}>
-        <Flex align="baseline" justify="space-between" flexDir={{ base: "column", md: "row" }} mb={6}>
+        <Flex
+          align="baseline"
+          justify="space-between"
+          flexDir={{ base: "column", md: "row" }}
+          mb={6}
+        >
           <Text fontSize="2xl" fontWeight="bold">
             Properties for Rent
           </Text>
