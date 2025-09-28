@@ -16,7 +16,7 @@ import PropertyCard from "../components/PropertyCard";
 import { useAppStore } from "../store";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-const PER_PAGE = 20;
+const PER_PAGE = 6;
 
 const RentPage = () => {
   const [properties, setProperties] = useState([]);
