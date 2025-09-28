@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { useAppStore } from "../store";
 import { useNavigate } from "react-router-dom";
-import { getMyProperties } from "../api";
+import { getMyPropertiesCount } from "../api";
 import ProfileCard from "../components/ProfileCard";
 import { toaster } from "../components/ui/toaster";
 
@@ -25,8 +25,10 @@ const DashboardPage = () => {
     const fetchCount = async () => {
       setLoading(true);
       try {
-        const res = await getMyProperties(user.id);
-        setListingCount(res.data.data.length);
+        const res = await getMyPropertiesCount(user.id);
+        setListingCount(res.data.count);
+        console.log(res.data);
+        
       } catch {
         // Optionally show error toast here
       } finally {

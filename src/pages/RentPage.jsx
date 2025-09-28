@@ -63,7 +63,12 @@ const RentPage = () => {
   );
 
   const renderSkeletonGrid = (count = 6) => (
-    <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} gap={4} spacing={6}>
+    <SimpleGrid
+      columns={{ base: 1, sm: 2, md: 3 }}
+      gap={4}
+      spacing={6}
+      w="full"
+    >
       {Array.from({ length: count }).map((_, index) => (
         <Box
           key={index}
@@ -72,6 +77,7 @@ const RentPage = () => {
           boxShadow="md"
           overflow="hidden"
           w="full"
+          minH="300px"
         >
           <Skeleton height="200px" />
           <Box p={4}>
@@ -154,7 +160,11 @@ const RentPage = () => {
           dataLength={rentProperties.length}
           next={fetchNext}
           hasMore={hasMore}
-          loader={<Box py={6}>{renderSkeletonGrid(3)}</Box>}
+          loader={
+            <Box py={6} w="full">
+              {renderSkeletonGrid(3)}
+            </Box>
+          }
           endMessage={
             <Center py={6}>
               <Text color="gray.400">End of property list.</Text>

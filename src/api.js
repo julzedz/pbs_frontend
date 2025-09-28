@@ -1,10 +1,9 @@
 import axios from "axios";
 import { useAppStore } from "./store";
 
-const API = axios.create({
-  baseURL: "https://server2025.propertybusstop.com" 
+export const API = axios.create({
+  baseURL: "https://server2025.propertybusstop.com",
   // || "http://localhost:3000"
-,
   headers: {
     Accept: "application/json",
   },
@@ -74,8 +73,8 @@ export const getLocalities = async (stateId) => {
   return API.get(`/api/v1/localities?state_id=${stateId}`);
 };
 
-export const getMyProperties = async (userId) => {
-  return API.get(`/api/v1/properties?user_id=${userId}`);
+export const getMyPropertiesCount = async (userId) => {
+  return API.get(`/api/v1/properties/count?user_id=${userId}`);
 };
 
 export const getFeatures = async () => {
