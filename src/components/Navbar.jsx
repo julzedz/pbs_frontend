@@ -199,16 +199,16 @@ const Navbar = () => {
             <Drawer.Trigger asChild>
               <Box
                 ref={btnRef}
-                size={"md"}
+                ml={4}
                 aria-label={"Open Menu"}
                 display={{ md: "none" }}
               >
-                <FiMenu size={24} />
+                <FiMenu size={32} />
               </Box>
             </Drawer.Trigger>
             <Portal>
               <Drawer.Backdrop onClick={() => setDrawerOpen(false)} />
-              <Drawer.Positioner>
+              <Drawer.Positioner zIndex={1500}>
                 <Drawer.Content minW="60vw" maxW="80vw" bg="white">
                   <CloseButton
                     size="lg"
@@ -216,6 +216,7 @@ const Navbar = () => {
                     top={2}
                     right={2}
                     onClick={() => setDrawerOpen(false)}
+                    _focus={{ outline: "none" }}
                   />
                   <Drawer.Body pt={12} px={4}>
                     <Stack as={"nav"} spacing={4} mt={4}>
@@ -223,9 +224,11 @@ const Navbar = () => {
                         <Link
                           as={RouterLink}
                           key={link.label}
+                          fontSize={"lg"}
+                          fontWeight={"semibold"}
                           to={link.to}
                           px={2}
-                          py={1}
+                          py={4}
                           rounded={"md"}
                           _hover={{ bg: "gray.100" }}
                           onClick={() => setDrawerOpen(false)}
@@ -235,7 +238,7 @@ const Navbar = () => {
                       ))}
                       <Button
                         colorScheme="purple"
-                        size="sm"
+                        size="lg"
                         w="full"
                         onClick={() => {
                           setDrawerOpen(false);
@@ -265,8 +268,11 @@ const Navbar = () => {
                           as={RouterLink}
                           to="/signin"
                           variant="ghost"
-                          size="sm"
+                          size="lg"
+                          fontSize={"lg"}
+                          fontWeight={"semibold"}
                           w="full"
+                          color={"purple.600"}
                           onClick={() => setDrawerOpen(false)}
                         >
                           Login
@@ -276,7 +282,8 @@ const Navbar = () => {
                         as={RouterLink}
                         to="/dashboard"
                         variant="ghost"
-                        size="sm"
+                        size="lg"
+                        fontWeight={"semibold"}
                         w="full"
                         onClick={() => setDrawerOpen(false)}
                       >
