@@ -39,6 +39,7 @@ const AboutUs = () => {
   return (
     <Box
       bgImage={`url(${headerImage})`}
+      bgAttachment={"fixed"}
       bgSize="cover"
       bgPosition="center"
       bgRepeat="no-repeat"
