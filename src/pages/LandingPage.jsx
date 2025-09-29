@@ -2,7 +2,6 @@ import {
   Box,
   Heading,
   Text,
-  Tabs,
   Input,
   Button,
   SimpleGrid,
@@ -144,14 +143,15 @@ const LandingPage = () => {
 
   return (
     <Box className="main-container">
-      {/* Hero Section */}
       <Box
-        py={16}
+        py={{base: 16, md: 6 }}
         px={4}
         textAlign="center"
         bgImage={`url(${bgImage})`}
+        bgBlendMode={"multiply"}
+        bgColor="purple.300/20"
         bgSize="cover"
-        bgPosition="center"
+        bgPosition="center bottom"
         bgRepeat="no-repeat"
       >
         <Heading
@@ -159,11 +159,11 @@ const LandingPage = () => {
           fontFamily="Spectral"
           fontWeight="800"
           fontSize={{ base: "2xl", md: "4xl" }}
-          mb={4}
+          mb={{ base: 4, md: 1}}
         >
           Find your Next Property
         </Heading>
-        <Text fontSize={{ base: "md", md: "xl" }} mb={8}>
+        <Text fontSize={{ base: "md", md: "xl" }} mb={{base: 8, md: 1}}>
           Buy, rent, or invest in your dream property
         </Text>
         {/* Search Bar */}
