@@ -95,14 +95,21 @@ const PropertyDetailsPage = () => {
               </Tag.Root>
             ))}
           </HStack>
-          <Text color="gray.600" fontSize="md" mb={2}>
+          <Text color="purple.700" fontWeight="bold" mb={6} fontSize="xl">
+            ₦{Number(attr.price).toLocaleString()}
+          </Text>
+          <Text color="gray.600" fontSize="md" my={2}>
             {attr.description}
           </Text>
-          <Box divideX="2px" my={4} />
-          <Stack spacing={2} fontSize="sm">
+          <Text my={2}>
+            <b>Property ID Number:</b> {attr.id}
+          </Text>
+          {/* <Box divideX="2px" mb={4} /> */}
+          <Stack spacing={2} fontSize="lg">
             <Text>
               <b>Street:</b> {attr.street}
             </Text>
+
             <Text>
               <b>Type:</b>{" "}
               {attr.property_type.charAt(0).toUpperCase() +
@@ -115,7 +122,7 @@ const PropertyDetailsPage = () => {
               <b>Bathrooms:</b> {attr.bathrooms}
             </Text>
             <Text>
-              <b>Click for more images/videos:</b>{" "}
+              <b>Click the link for more images/videos:</b>{" "}
               <ChakraLink
                 href={attr.instagram_video_link}
                 color="purple.600"
@@ -135,15 +142,10 @@ const PropertyDetailsPage = () => {
               {attr.purpose.charAt(0).toUpperCase() + attr.purpose.slice(1)}
             </Text>
             <Text>
-              <b>Contact Name:</b>{" "}
-              {attr.contact_name}
+              <b>Contact Name:</b> {attr.contact_name}
             </Text>
             <Text>
-              <b>Contact Phone:</b>{" "}
-              {attr.contact_phone}
-            </Text>
-            <Text color="purple.700" fontWeight="bold" fontSize="lg">
-              ₦{Number(attr.price).toLocaleString()}
+              <b>Contact Phone:</b> {attr.contact_phone}
             </Text>
           </Stack>
         </Box>
