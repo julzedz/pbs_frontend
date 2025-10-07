@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import {
   Box,
   Heading,
@@ -9,8 +8,9 @@ import {
   Dialog,
   Portal,
   CloseButton,
+  Button,
 } from "@chakra-ui/react";
-import { PaystackButton } from "react-paystack";
+import { usePaystackPayment } from "react-paystack";
 import { useState } from "react";
 import { useAppStore } from "../store";
 import { toaster } from "./ui/toaster";
@@ -18,8 +18,9 @@ import SubscriptionCard from "./SubscriptionCard";
 
 const SubscriptionSection = () => {
   const user = useAppStore((state) => state.user);
-  const triggerRef = useRef(null);
   let fullName = user?.first_name + " " + user?.last_name;
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   const [formData, setFormData] = useState({
     fullName: fullName || "",
     phoneNumber: user?.telephone || "",
@@ -48,13 +49,25 @@ const SubscriptionSection = () => {
     // "Premium 'Verified Agent' Badge",
   ];
 
+  const config = {
+    email: formData.email,
+    amount: formData.subscriptionAmount * 100,
+    metadata: {
+      name: formData.fullName,
+      phoneNumber: formData.phoneNumber,
+    },
+    publicKey,
+  };
+
+  const initializePayment = usePaystackPayment(config);
+
   const handleSubscribe = (isPaid) => {
     if (!isPaid) {
       window.location.href = "/post-property";
       return;
     }
     if (user) {
-      triggerRef.current?.click();
+      setIsDialogOpen(true);
     } else {
       window.location.href = "/signin";
     }
@@ -80,17 +93,11 @@ const SubscriptionSection = () => {
     });
   };
 
-  const componentProps = {
-    email: formData.email,
-    amount: formData.subscriptionAmount * 100,
-    metadata: {
-      name: formData.fullName,
-      phoneNumber: formData.phoneNumber,
-    },
-    publicKey,
-    text: "Subscribe",
-    onSuccess: handleSuccess,
-    onClose: handleClose,
+  const handlePayment = () => {
+    // First, close the dialog
+    setIsDialogOpen(false);
+    // Then
+    initializePayment({ onSuccess: handleSuccess, onClose: handleClose });
   };
 
   return (
@@ -145,11 +152,10 @@ const SubscriptionSection = () => {
           onSubscribe={() => handleSubscribe(true)}
         />
       </SimpleGrid>
-      <Dialog.Root>
-        <Dialog.Trigger asChild>
-          <button ref={triggerRef} style={{ display: "none" }} />
-        </Dialog.Trigger>
-
+      <Dialog.Root
+        open={isDialogOpen}
+        onOpenChange={(e) => setIsDialogOpen(e.open)}
+      >
         <Portal>
           <Dialog.Backdrop />
           <Dialog.Positioner>
@@ -217,18 +223,14 @@ const SubscriptionSection = () => {
                 justifyContent="center"
                 alignItems="center"
               >
-                <Dialog.ActionTrigger asChild>
-                  <PaystackButton
-                    {...componentProps}
-                  />
-                </Dialog.ActionTrigger>
+                <Button colorPalette="orange.500" onClick={handlePayment}>
+                  Subscribe
+                </Button>
               </Dialog.Footer>
             </Dialog.Content>
           </Dialog.Positioner>
         </Portal>
       </Dialog.Root>
-
-      {/* <toaster /> */}
     </Box>
   );
 };
