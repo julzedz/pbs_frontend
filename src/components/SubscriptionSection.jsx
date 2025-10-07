@@ -150,7 +150,7 @@ const SubscriptionSection = () => {
           <button ref={triggerRef} style={{ display: "none" }} />
         </Dialog.Trigger>
 
-        <Portal container={document.body}>
+        <Portal>
           <Dialog.Backdrop />
           <Dialog.Positioner>
             <Dialog.Content display="flex" flexDirection="column" gap={4} p={4}>
@@ -181,35 +181,35 @@ const SubscriptionSection = () => {
                   <Field.Label>
                     Phone Number <Field.RequiredIndicator />
                   </Field.Label>
-                <Input
-                  value={formData.phoneNumber}
-                  onChange={(e) =>
-                    setFormData({ ...formData, phoneNumber: e.target.value })
-                  }
-                />
+                  <Input
+                    value={formData.phoneNumber}
+                    onChange={(e) =>
+                      setFormData({ ...formData, phoneNumber: e.target.value })
+                    }
+                  />
                 </Field.Root>
                 <Field.Root mb={3}>
                   <Field.Label>
                     Email <Field.RequiredIndicator />
                   </Field.Label>
-                <Input
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                />
+                  <Input
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                  />
                 </Field.Root>
                 <Field.Root mb={3}>
                   <Field.Label>
                     Subscription Amount <Field.RequiredIndicator />
                   </Field.Label>
-                <Input
-                  value={`₦${formData.subscriptionAmount.toLocaleString()}`}
-                  isReadOnly
-                  focusBorderColor="transparent"
-                  _readOnly={{ bg: "gray.100", _dark: { bg: "gray.800" } }}
-                />
-                  </Field.Root>
+                  <Input
+                    value={`₦${formData.subscriptionAmount.toLocaleString()}`}
+                    isReadOnly
+                    focusBorderColor="transparent"
+                    _readOnly={{ bg: "gray.100", _dark: { bg: "gray.800" } }}
+                  />
+                </Field.Root>
               </Dialog.Body>
 
               <Dialog.Footer
@@ -219,18 +219,6 @@ const SubscriptionSection = () => {
               >
                 <Dialog.ActionTrigger asChild>
                   <PaystackButton
-                    style={{
-                      width: "100%",
-                      padding: "10px",
-                      borderRadius: "5px",
-                      // backgroundColor: "#orange.400",
-                      color: "white",
-                      fontWeight: "medium",
-                      transition: "all 0.3s ease",
-                      hover: { backgroundColor: "#orange.500" },
-                      textAlign: "center",
-                    }}
-                    // className="block w-full px-4 py-2 bg-[orange.400] text-white font-medium rounded-md hover:bg-[orange.500] transition-colors text-center"
                     {...componentProps}
                   />
                 </Dialog.ActionTrigger>
