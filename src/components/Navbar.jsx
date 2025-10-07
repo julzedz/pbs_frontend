@@ -9,7 +9,6 @@ import {
   Portal,
   CloseButton,
   Drawer,
-  Text,
   Dialog,
 } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
@@ -161,7 +160,7 @@ const Navbar = () => {
                       </Button>
                       <Dialog.ActionTrigger asChild>
                         <Button
-                          colorScheme="red"
+                          colorPalette="red"
                           onClick={handleLogout}
                           isLoading={loading}
                         >

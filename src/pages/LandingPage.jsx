@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import PropertyCard from "../components/PropertyCard";
 import API, { getStates, getLocalities, featuredProperties } from "../api";
 import bgImage from "../assets/bgimage1.webp";
+import SubscriptionSection from "../components/SubscriptionSection";
 
 const tabOptions = [
   { value: "buy", label: "Buy", placeholder: "search sale" },
@@ -144,7 +145,7 @@ const LandingPage = () => {
   return (
     <Box className="main-container">
       <Box
-        py={{base: 16, md: 6 }}
+        py={{ base: 16, md: 6 }}
         px={4}
         textAlign="center"
         bgImage={`url(${bgImage})`}
@@ -159,11 +160,11 @@ const LandingPage = () => {
           fontFamily="Spectral"
           fontWeight="800"
           fontSize={{ base: "2xl", md: "4xl" }}
-          mb={{ base: 4, md: 1}}
+          mb={{ base: 4, md: 1 }}
         >
           Find your Next Property
         </Heading>
-        <Text fontSize={{ base: "md", md: "xl" }} mb={{base: 8, md: 1}}>
+        <Text fontSize={{ base: "md", md: "xl" }} mb={{ base: 8, md: 1 }}>
           Buy, rent, or invest in your dream property
         </Text>
         {/* Search Bar */}
@@ -358,13 +359,15 @@ const LandingPage = () => {
                   boxShadow="md"
                   overflow="hidden"
                 >
-                  <Image
-                    src={home.attributes.image_url}
-                    alt={home.attributes.title}
-                    w="full"
-                    h="200px"
-                    objectFit="cover"
-                  />
+                  <Box h="200px">
+                    <Image
+                      src={home.attributes.image_url}
+                      alt={home.attributes.title}
+                      w="full"
+                      h="full"
+                      objectFit="cover"
+                    />
+                  </Box>
                   <Box p={4}>
                     <Text
                       color="purple.500"
@@ -383,6 +386,7 @@ const LandingPage = () => {
               ))}
         </SimpleGrid>
       </Box>
+      <SubscriptionSection />
     </Box>
   );
 };
