@@ -33,9 +33,9 @@ const SubscriptionSection = () => {
 
   const freeBenefits = [
     "Free Property Listings",
-    "Placement Of Your Property In Search",
+    "Placement Of Property In Search",
     // "Direct Lead Notifications",
-    "High-Resolution Picture Of Your Property",
+    "High-Res Image Of Your Property",
   ];
 
   const paidBenefits = [
@@ -44,7 +44,7 @@ const SubscriptionSection = () => {
     "Daily Automatic Listing Boosts",
     "Dedicated Social Media Post (Weekly)",
     // "Exclusive Market Analytics Dashboard",
-    "Priority Support (24hr response time)",
+    "Priority Support (24hr response)",
     // "Video & Virtual Tour Support",
     // "Premium 'Verified Agent' Badge",
   ];
@@ -133,7 +133,7 @@ const SubscriptionSection = () => {
         columns={{ base: 1, md: 2 }}
         spacing={10}
         columnGap={4}
-        rowGap={4}
+        rowGap={{ base: 8, md: 4 }}
         maxW="5xl"
         mx="auto"
       >

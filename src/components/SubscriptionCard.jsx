@@ -77,7 +77,12 @@ const SubscriptionCard = ({ isPaid, title, price, benefits, onSubscribe }) => {
                   <MdCheckCircle size="1.2em" />
                 )}
               </List.Indicator>
-              <Text as="span" fontSize="md" mt="-1px">
+              <Text
+                as="span"
+                fontSize="md"
+                mt="-1px"
+                textAlign={{ base: "left", md: "unset" }}
+              >
                 {benefit}
               </Text>
             </List.Item>

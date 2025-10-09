@@ -236,6 +236,17 @@ const Navbar = () => {
                         </Link>
                       ))}
                       <Button
+                        as={RouterLink}
+                        to="/dashboard"
+                        variant="outline"
+                        size="lg"
+                        fontWeight={"semibold"}
+                        w="full"
+                        onClick={() => setDrawerOpen(false)}
+                      >
+                        My Dashboard
+                      </Button>
+                      <Button
                         colorScheme="purple"
                         size="lg"
                         w="full"
@@ -252,13 +263,15 @@ const Navbar = () => {
                       </Button>
                       {user ? (
                         <Button
-                          variant="ghost"
+                          variant="outline"
                           size="sm"
                           w="full"
+                          my={2}
                           onClick={() => {
                             setDrawerOpen(false);
                             setDialogOpen(true);
                           }}
+                          colorPalette="red"
                         >
                           Logout
                         </Button>
@@ -277,17 +290,6 @@ const Navbar = () => {
                           Login
                         </Button>
                       )}
-                      <Button
-                        as={RouterLink}
-                        to="/dashboard"
-                        variant="ghost"
-                        size="lg"
-                        fontWeight={"semibold"}
-                        w="full"
-                        onClick={() => setDrawerOpen(false)}
-                      >
-                        My Dashboard
-                      </Button>
                     </Stack>
                   </Drawer.Body>
                 </Drawer.Content>
